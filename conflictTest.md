@@ -1,1 +1,1 @@
-Practicing using Git and resolving confllitcts
+Practicing using Git and resolving conflicts
