@@ -1,5 +1,5 @@
 # GitHub
-**How to Commit Changes:
+**How to Commit Changes**:
 1. Make the change
 2. Type the command "git add ." in the git bash terminal
 3. Type the command "git commit" in the terminal
@@ -8,10 +8,10 @@
 6. Use "git status" to see how the local cloned repository compares to the github repository
 
 # Markdown Syntax
-**Styling text:
-- "** **" = bold
-- "* *" = italic
-- "~~" = strikethrough
-- "***" = all bold italic
+**Styling text**:
+- wrap w/ "**" = bold
+- wrap w/ "* *" = italic
+- wrap w/ "~~" = strikethrough
+- wrap w/ "***" = all bold italic
 - precede quoted text with ">"
 
