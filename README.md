@@ -5,6 +5,9 @@
 We all have goals. Some are small. Some are big. But regardless  of what they are, writing down goals and having somebody keep us accountable to them makes it much more likely to achieve them. "REACH!" lets you do all this in one app. On "REACH!", you can add your own goals, set a time period, and optionally add another user on the app as an accountability buddy. They'll be notified as you log (or fail to log) progress, so they can help you become your best self.
 
 ### Design
+
+![Mock](imgs/startup_webpage_design.jpg)
+
 ### Key Features
 - Secure login over HTTPS
 - Ability to select categories of goals, including phyiscal, educational, occupational, hobbies, and relationship
