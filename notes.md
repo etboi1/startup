@@ -10,7 +10,7 @@
 
 # Markdown Syntax
 
-## Styling text**:
+## Styling text:
 - wrap w/ "**" = bold
 - wrap w/ "* *" = italic
 - wrap w/ "~~" = strikethrough
