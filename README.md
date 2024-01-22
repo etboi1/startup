@@ -6,7 +6,7 @@ We all have goals. Some are small. Some are big. But regardless  of what they ar
 
 ### Design
 
-![Mock](imgs/startup_webpage_design.jpg)
+![Mock](startup_webpage_design.jpg)
 
 ### Key Features
 - Secure login over HTTPS
