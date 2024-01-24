@@ -47,3 +47,40 @@ certificate issuer responsible for verifying certificate owner actually owns dom
 
 ### Caddy:
 - uses Let's Encrypt to generate web certificate every time HTTPS request is made for a domain name that Caddy doesn't have web certificate for
+
+# Console & Editors:
+
+## Developer Environment:
+
+### Console:
+Console Commands:
+- echo - Output the parameters of the command
+- cd - Change directory
+- mkdir - Make directory
+- rmdir - Remove directory
+- rm - Remove file(s)
+- mv - Move file(s)
+- cp - Copy files
+- ls - List files
+- curl - Command line client URL browser
+- grep - Regular expression search (within a file)
+- find - Find files (within your operating system)
+- top - View running processes
+- df - View disk statistics
+- cat - Output file
+- less - Interactive file output
+- wc - Count words
+- ps - View processes
+- kill - Kill a process
+- sudo - Execute as admin (basically tells the computer you know what you’re doing)
+- ssh - Remote shell
+- scp - Securely copy files to a remote computer
+- history - Show history of commands
+- ping - Test connection
+- tracert - Trace network
+- dig - DNS information
+- man - Look in the manual
+- | - takes the output from the last command and pipes it in as the input to the next command
+- Ctrl c - cancel command
+- Ctrl r - recall command
+- Ctrl z - background command
