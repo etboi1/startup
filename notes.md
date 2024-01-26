@@ -110,6 +110,8 @@ Console Commands:
 - ol, ul - ordered list & unorder list
 - a - anchor tag (for hyperlink)
 - img - graphical image reference
+- radio - mutually exclusive choice
+- checkbox - choice, but not exlusive
 
 ### How HTML Works
 - computer converts the html file into an in-memory tree
