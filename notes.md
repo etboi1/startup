@@ -103,7 +103,7 @@ Console Commands:
 
 ### Elements
 - div - block division of content
-- span - inline span of content
+- span - inline (within a block) span of content
 - h1-h9 - text heading (h1 is biggest, h9 is smallest)
 - p - paragraph
 - table - a table bruh
