@@ -87,8 +87,14 @@ Console Commands:
 
 # HTML
 
-### Structure
+### Basic Structure
 - DOCTYPE - tells what version of html you're using
 - Head - meta data (doesn't render)
     - Title - often put in the tab
 - Body - stuff that renders on the page
+
+### How HTML Works
+- computer converts the html file into an in-memory tree
+- JavaScript and other stuff can mess with the tree to render it in a certain way
+- When a computer calls a webserver to load a webpage, it will automatically load index.html if the call is not specified. 
+    - **Name your base landing page index.html**
