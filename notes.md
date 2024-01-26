@@ -84,3 +84,11 @@ Console Commands:
 - Ctrl c - cancel command
 - Ctrl r - recall command
 - Ctrl z - background command
+
+# HTML
+
+### Structure
+- DOCTYPE - tells what version of html you're using
+- Head - meta data (doesn't render)
+    - Title - often put in the tab
+- Body - stuff that renders on the page
