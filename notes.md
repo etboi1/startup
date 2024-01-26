@@ -92,9 +92,24 @@ Console Commands:
 
 ### Basic Structure
 - DOCTYPE - tells what version of html you're using
+- html - page container
 - Head - meta data (doesn't render)
     - Title - often put in the tab
 - Body - stuff that renders on the page
+- header - header content
+- main - main content of page
+- footer - footer of main content
+- section - a section of main content
+
+### Elements
+- div - block division of content
+- span - inline span of content
+- h1-h9 - text heading (h1 is biggest, h9 is smallest)
+- p - paragraph
+- table - a table bruh
+- ol, ul - ordered list & unorder list
+- a - anchor tag (for hyperlink)
+- img - graphical image reference
 
 ### How HTML Works
 - computer converts the html file into an in-memory tree
