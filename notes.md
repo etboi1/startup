@@ -34,6 +34,9 @@
 ### HTTP/HTTPS:
 - HTTP = Non-secure Hypertext Transport Protocol
     - Without a secure connection, anyone that had access to the network traffic could easily capture all data
+    - it is the communication network between web browser and web server
+        - normally web browser needs to request data from the web server
+        - you need web sockets for it to be bi-directional
 - HTTPS = Secure Hypertext Transport Protocol
     - Secure connection happens before any data exchanged
     - Secure connection means all data is encrypted using TLS protocol
