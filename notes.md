@@ -112,6 +112,7 @@ Console Commands:
 - img - graphical image reference
 - radio - mutually exclusive choice
 - checkbox - choice, but not exlusive
+- menu - another container for list items
 
 ### How HTML Works
 - computer converts the html file into an in-memory tree
