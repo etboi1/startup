@@ -6,6 +6,18 @@
     <title>REACH! - Add a Goal</title>
 </head>
 <body>
-    
+    <form action="goalsdata.html">
+        <ul>
+            <li><label for="title">Goal Title:</label><input type="text"></li>
+            <li><label for="goaltype">Goal Type:</label><select name="goaltype" id="goaltype">
+                <option>Physical</option>
+                <option>Educational</option>
+                <option>Occupational</option>
+                <option>Hobbies</option>
+                <option>Social</option>
+            </select></li>
+            <li><label for="completiondate">Target Completion Date:</label><input type="datetime-local" name="varCompletiondate" id="completiondate"></li>
+        </ul>
+    </form>
 </body>
 </html>
