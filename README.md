@@ -26,8 +26,8 @@ We all have goals. Some are small. Some are big. But regardless  of what they ar
 - DB/Login - stores users and goals in database. Credentials securely stored in database. Can't access or create foals without authentication
 - WebSocket - When user share their goals, their goal is broadcast to the other chosen user
 - React - application uses the React web framework
-<!-- ## HTML Deliverable
-## CSS Deliverable
+## HTML Deliverable
+<!-- ## CSS Deliverable
 ## JavaScript Deliverable
 ## Service Deliverable
 ## DB/Login Deliverable
