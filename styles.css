@@ -1,8 +1,27 @@
+body {
+   font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+   display: block;
+   position: relative;
+   text-align: center;
+}
+
 li {
    list-style-type: none;
 }
 
 .bottom_right_footer {
-   display: inline-block;
-   position: right;
+   text-align: right;
+}
+
+table {
+   width: 100%;
+   height: auto;
+}
+
+th, td {
+   border: solid black 1px;
+   height: auto;
 }
