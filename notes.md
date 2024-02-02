@@ -119,3 +119,16 @@ Console Commands:
 - JavaScript and other stuff can mess with the tree to render it in a certain way
 - When a computer calls a web server to load a webpage, it will automatically load index.html if the call is not specified. 
     - **Name your base landing page index.html**
+
+# CSS
+- Fonts
+    - San Serif - only major strokes
+    - Serif - minor strokes off major strokes
+    - Monospace - all letters have same size
+    - *go to fonts.google for more fonts*
+- Importing style sheets:
+    - use "@import url(https...com)"
+- Sizing:
+    - vh (vertical height) is based off of the display size
+    - percentage is based off of the parent element
+    - em is the size of the character of m
