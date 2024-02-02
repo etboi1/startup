@@ -126,9 +126,18 @@ Console Commands:
     - Serif - minor strokes off major strokes
     - Monospace - all letters have same size
     - *go to fonts.google for more fonts*
-- Importing style sheets:
-    - use "@import url(https...com)"
+    - Importing on style sheets:
+        - use "@import url(https...com)"
 - Sizing:
     - vh (vertical height) is based off of the display size
     - percentage is based off of the parent element
     - em is the size of the character of m
+- Unicode and UTF-8:
+    - put "charset="UTF-8"" in the meta section
+    - allows you to write in all different types of languages in your html
+- Animations:
+    - under the desired element:
+        - use animation-name: demo; and animation-duration: (time); to create an animation
+    - then after that element, us:
+        - @keyframes (name of animation) {} to define the animation
+        - Use from...to inside the definition to define what it will start at and what it will end at
