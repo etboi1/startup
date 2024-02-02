@@ -138,6 +138,7 @@ Console Commands:
 - Animations:
     - under the desired element:
         - use animation-name: demo; and animation-duration: (time); to create an animation
+        - use "alternate" to go back and forth between beginning and end of animation
     - then after that element, us:
         - @keyframes (name of animation) {} to define the animation
         - Use from...to inside the definition to define what it will start at and what it will end at
