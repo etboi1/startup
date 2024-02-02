@@ -142,3 +142,6 @@ Console Commands:
     - then after that element, us:
         - @keyframes (name of animation) {} to define the animation
         - Use from...to inside the definition to define what it will start at and what it will end at
+- Additional Notes:
+    - :root --> a selector that assigns attributes it holds to all other selectors
+    - !IMPORTANT --> decorator that forces an attribute to take priority
