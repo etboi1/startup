@@ -13,7 +13,7 @@ We all have goals. Some are small. Some are big. But regardless  of what they ar
 - Ability to select categories of goals, including phyiscal, educational, occupational, hobbies, and relationship
 - Ability to write and set goals in each category
 - Ability for a user to share their goal with another user
-- Goals ae persistently stored
+- Goals are persistently stored
 - Ability to report progress on a goal
 ### Technologies
 - HTML - uses correct HTML structures for application. Three HTML pages. One for login, one for personal goals, and one for goals shared by other users
