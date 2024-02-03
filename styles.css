@@ -25,3 +25,14 @@ th, td {
    border: solid black 1px;
    height: auto;
 }
+
+.dwayne {
+   width: 100%;
+   object-fit: cover;
+   height: 500px;
+   object-position: 0% 0%;
+}
+
+h2 {
+   text-align: center;
+}
