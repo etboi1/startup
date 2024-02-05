@@ -157,7 +157,11 @@ Console Commands:
 - Float --> makes something go to a certain side of the page (left or right)
     - right is also same as inline-end (sends it to the end of the text - so in arabic inline-end would be left)
     - inline-start is the opposite equivalent
-- Display:
+- Display Type:
     - Block --> width expands to fill up width of parent (like a paragraph)
     - Inline --> marking up a portion of bigger text; width is defined to be content size (like a text-box)
-    - Grid --> 
+    - Grid --> effects the children of the element, not the element itself, nor its grandchildren
+    - Flex --> also controls the children
+        - Column --> flexes downward
+        - flex: 0 means that you don't want it to flex at all
+        - basis: the number of pixels you add on to the flex (which is a fractional unit) after the flex is given
