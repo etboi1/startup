@@ -121,6 +121,13 @@ Console Commands:
     - **Name your base landing page index.html**
 
 # CSS
+
+## Rule Sets
+- Padding --> between content and border
+- Margin --> space between two blocks
+- hsl --> hue, saturation and light (hue, saturation, light)
+
+## Fonts, Animation, Practice
 - Fonts
     - San Serif - only major strokes
     - Serif - minor strokes off major strokes
@@ -145,3 +152,12 @@ Console Commands:
 - Additional Notes:
     - :root --> a selector that assigns attributes it holds to all other selectors
     - !IMPORTANT --> decorator that forces an attribute to take priority
+
+## Responsive, grid, flex
+- Float --> makes something go to a certain side of the page (left or right)
+    - right is also same as inline-end (sends it to the end of the text - so in arabic inline-end would be left)
+    - inline-start is the opposite equivalent
+- Display:
+    - Block --> width expands to fill up width of parent (like a paragraph)
+    - Inline --> marking up a portion of bigger text; width is defined to be content size (like a text-box)
+    - Grid --> 
