@@ -165,3 +165,8 @@ Console Commands:
         - Column --> flexes downward
         - flex: 0 means that you don't want it to flex at all
         - basis: the number of pixels you add on to the flex (which is a fractional unit) after the flex is given
+
+## CSS Debugging, Frameworks, Simon
+- Frameworks:
+    - the bootstrap stylesheet is linked under the head element
+    - the javascript is linked at the end of your body element
