@@ -199,6 +199,13 @@ Console Commands:
     - object = essentialy a map (name-vaule pairs. Name is a symbol)
         - use x = {} as short script to create a new object
     - array = is of object rype
+    - function = function is a first-order type
+        - can return any type from a function
+        - if you don't return anything, it will return undefined
+    - Dynamic Conversions:
+        - JS attempts to add different types together when you tell it to:
+            - Thus 'rat' + [' fink'] would give you 'rat fink'
+            - adding an int and a string, js would convert the int to a string and then add the strings
 - Operators
 - Conditionals
 - Loops
