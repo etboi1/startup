@@ -170,3 +170,35 @@ Console Commands:
 - Frameworks:
     - the bootstrap stylesheet is linked under the head element
     - the javascript is linked at the end of your body element
+
+# JavaScript
+
+## General Notes
+- Officially called ECMAScript
+- Inspired by Scheme
+- Interpreted
+- Dynamically typed
+- Most popular programing language in the world
+- Three ways to add js to html file:
+    - Script attribute - put the js directly in to the attribute tag of the element using it
+    - Script tag - ass a script tag after the body tag and put your js in that
+        - You need to put it after the body tag so that if it uses any of the html in the file, that html has already been rendered
+- Put semicolons at the end of statements, curly brackets for loops and functions
+- Name js file "main.js"
+- Declaring Variables:
+    - syntax "let" for declaring variables:
+        - "let x = 1"
+        - OR "const" z = 4
+
+## Types, Operators, Conditionals & Loops
+- Types
+    - null = empty value (but it is a null object)
+    - undefined = undefined variable (truly not an object or type)
+    - string = same as other languages
+    - number = integer
+    - object = essentialy a map (name-vaule pairs. Name is a symbol)
+        - use x = {} as short script to create a new object
+    - array = is of object rype
+- Operators
+- Conditionals
+- Loops
