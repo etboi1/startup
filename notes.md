@@ -207,5 +207,31 @@ Console Commands:
             - Thus 'rat' + [' fink'] would give you 'rat fink'
             - adding an int and a string, js would convert the int to a string and then add the strings
 - Operators
+    - equality -> "==="
+    - and -> "&&"
+    - or -> "||"
 - Conditionals
+    - falsy (false, 0, -0, '', NaN, null, undefined)
+    - truthy = !falsy
 - Loops
+    - For:
+        - basically same syntax as c/c++
+    - While:
+        - again, use "break" to break out
+    - Switch:
+        - code with "cases" inside it -> case is executed if matches case requirement
+        - program will continue on to next case without a break
+        - default is the case that runs given that it matches none of the case requirements
+
+## Functions, objects, classes, JSON
+- Functions:
+    - Syntax -> function name(parameter) {}
+    - Functions are primary types in JS
+    - Anonymous functions:
+        - Function without a name -> function (parameter) {}
+        - Can assign the function to a variable, which can be used to call the function
+    - Functions w/o Return Types:
+        - Returns undefined
+    - JS has optional parameters:
+        - f = function (a, b, c = 'rat') { return [a, b, c]}
+        - f(1) would return [1, undefined, 'rat']
