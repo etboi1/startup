@@ -235,3 +235,9 @@ Console Commands:
     - JS has optional parameters:
         - f = function (a, b, c = 'rat') { return [a, b, c]}
         - f(1) would return [1, undefined, 'rat']
+    - Arrow Functions:
+        - Single line with implicit return, inherits this binding
+        - Syntax:
+            - function name() { const arrow = () => 1; const arrowWith Block = (a) => {a;}}
+            - define the name of the function, assign the number of parameters, and what to do with the parameters
+            - looks kinda like a function within a function
