@@ -241,3 +241,5 @@ Console Commands:
             - function name() { const arrow = () => 1; const arrowWith Block = (a) => {a;}}
             - define the name of the function, assign the number of parameters, and what to do with the parameters
             - looks kinda like a function within a function
+    - Closures:
+        - A function and its surrounding state when it got created
