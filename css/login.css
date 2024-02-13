@@ -8,4 +8,57 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+    }
+
+    img {
+        border: 5px solid;
+        max-width: 100%;
+    }
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    label {
+        margin: 3px;
+    }
+
+    button {
+        margin: 3px;
+    }
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+
+    span {
+        flex: 1;
+    }
+
+    a {
+        flex: 1;
+    }
 }
