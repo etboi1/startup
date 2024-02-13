@@ -40,16 +40,18 @@ h2 {
 html {
    background-color: rgb(81, 85, 94);
    height: 100%;
+   display: flex;
+   flex-direction: column;
 }
 
 body {
    display: flex;
    flex-direction: column;
+   flex: 1;
    color: white;
    margin: 0;
    padding: 0;
    align-items: center;
-   height: 100%;
 }
 
 .header {
@@ -150,7 +152,7 @@ footer {
    flex-direction: row;
    width: 100%;
    background-color: navy;
-   flex: 40px;
+   flex: 40px 0;
    margin-top: 2em;
 
    span {
