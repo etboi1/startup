@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
+    <header class="header">
         <!-- This nav bar will be a sticky nav bar at the top of the page -->
-        <nav>
+        <nav class="nav">
             <!-- After adding css, this will be on the far left of the nav bar, while the links will be on the right -->
             <h2 class="navtitle">REACH!</h2>
             <h3 class="navitem"><a href="goals.html">Personal Goals</a></h3>
-            <h3 class="navitem"><a href="sharegoals.html">Shared Goals</a></h3>
+            <h3 class="navitem activepage"><a href="sharegoals.html">Shared Goals</a></h3>
             <h3 class="navitem"><a href="https://simon.reachgoals.click">Simon</a></h3>
         </nav>
         <!-- This is the title of the page, which will be under the nav bar -->
@@ -22,7 +22,7 @@
 
     <main>
         <h2>Shared with You</h2>
-        <table>
+        <table class="goaldata center-text">
             <th>Billy</th>
             <th>Joe</th>
             <th>Johnny</th>
@@ -47,20 +47,24 @@
             </tr>
         </table>
         <h2>Shared by You</h2>
-        <table>
-            <th>Gain 20 Pounds</th>
-            <th>Goal 2 Name</th>
-            <th>Goal 3 Name</th>
-            <tr>
-                <td>Billy</td>
-                <td>Joe</td>
-                <td>Jill</td>
-            </tr>
-            <tr>
-                <td>Joe</td>
-                <td></td>
-                <td></td>
-            </tr>
+        <table class="goaldata center-text">
+            <thead>
+                <th>Gain 20 Pounds</th>
+                <th>Goal 2 Name</th>
+                <th>Goal 3 Name</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Billy</td>
+                    <td>Joe</td>
+                    <td>Jill</td>
+                </tr>
+                <tr>
+                    <td>Joe</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
         </table>
     </main>
 
