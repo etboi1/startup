@@ -52,15 +52,16 @@ body {
    height: 100%;
 }
 
-header {
+.header {
    display: flex;
    flex-direction: column;
    justify-content: center;
    align-items: center;
    width: 100%;
+   position: sticky;
 }
 
-nav {
+.nav {
    width: 100%;
    padding: 0;
    margin: 0;
@@ -106,8 +107,42 @@ nav {
    }
 }
 
+.activepage {
+   background-color: white;
+
+   a {
+      color: blue !important;
+   }
+
+   a:hover {
+      color: navy !important;
+   }
+}
+
 main {
    flex: 1;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+
+.goaldata {
+   width: 100%;
+   border: solid navy;
+
+   thead {
+      background-color: white;
+      color: navy;
+   }
+   
+   tbody {
+      background-color: rgb(128, 128, 128);
+   }
+
+   tr {
+      opacity: 100%;
+   }
 }
 
 footer {
@@ -141,4 +176,8 @@ footer {
    a:hover {
        color: rgb(81, 85, 94);
    }
+}
+
+.center-text {
+   text-align: center;
 }
