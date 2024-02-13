@@ -1,5 +1,5 @@
 html {
-    background-color: gray;
+    background-color: rgb(81, 85, 94);
 }
 
 body {
@@ -9,6 +9,7 @@ body {
     align-items: center;
     color: white;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
 }
 
 header {
@@ -16,6 +17,7 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 5px;
 
     h1 {
         text-align: center;
@@ -53,12 +55,32 @@ form {
 footer {
     display: flex;
     flex-direction: row;
+    width: 100%;
+    background-color: navy;
+    flex: 40px;
+    margin-top: 2em;
 
     span {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         flex: 1;
+        text-align: center;
     }
 
     a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         flex: 1;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: rgb(81, 85, 94);
     }
 }

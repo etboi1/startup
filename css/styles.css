@@ -38,7 +38,8 @@ h2 {
 } */
 
 html {
-   background-color: gray;
+   background-color: rgb(81, 85, 94);
+   height: 100%;
 }
 
 body {
@@ -48,6 +49,7 @@ body {
    margin: 0;
    padding: 0;
    align-items: center;
+   height: 100%;
 }
 
 header {
@@ -101,5 +103,42 @@ nav {
    a:hover {
       background-color: white;
       color: navy;
+   }
+}
+
+main {
+   flex: 1;
+}
+
+footer {
+   display: flex;
+   flex-direction: row;
+   width: 100%;
+   background-color: navy;
+   flex: 40px;
+   margin-top: 2em;
+
+   span {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       flex: 1;
+       text-align: center;
+   }
+
+   a {
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       align-items: center;
+       flex: 1;
+       text-align: center;
+       color: white;
+       text-decoration: none;
+   }
+
+   a:hover {
+       color: rgb(81, 85, 94);
    }
 }
