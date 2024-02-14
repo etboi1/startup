@@ -105,18 +105,18 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      transition: .25s;
    }
    a:hover {
       background-color: rgba(156, 211, 255, 0.7);
       color: navy;
+      border-radius: 8px;
    }
 }
 
 .activepage {
-   background-color: rgba(156, 211, 255, 0.7);
-
    a {
-      color: white !important;
+      color: rgba(156, 211, 255, 0.7);
    }
 
    a:hover {
