@@ -243,3 +243,17 @@ Console Commands:
             - looks kinda like a function within a function
     - Closures:
         - A function and its surrounding state when it got created
+
+## Regex, rest/spread, destructure, exception
+- Regex:
+    - objRex syntax --> new RegExp('cat.?', 'i')
+        - the 'i' means it's case insensitive
+    - literalRegex syntax --> /cat.?/i
+        - most people use this syntax
+    - use string.match(literalRegex/objRegex) to match the regex with something in a string
+    - .replace(Regex, replacement_string) 
+        - matches with the part of the string matching the Regex, and replaces it with the second parameter
+- Arrays:
+    - basically a vector in css, a list in python
+    - .push() adds to the end of the array
+    - .pop() removes an item from the end of the array
