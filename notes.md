@@ -214,7 +214,10 @@ Console Commands:
     - and -> "&&"
     - or -> "||"
         - or stops as soon as it reaches something that's truthy
-        - returns whatever actually satisfied the expression (whatever's truthy)    
+        - returns whatever actually satisfied the expression (whatever's truthy) 
+    - ?? -> Nullish --> returns the first thing that's not nullish (coalesces the null things into the first non null thing)
+        - undefined and null are both nullish  
+    - ??= -> Nullish assignment operator --> if this thing is nullish, assign it to this value 
 - Conditionals
     - falsy (false, 0, -0, '', NaN, null, undefined)
     - truthy = !falsy
