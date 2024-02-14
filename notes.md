@@ -1,3 +1,6 @@
+# Miscellaneous Notes
+- MDN Web Docs is a great recource that provides information about Open Web technologies including HTML, CSS, JS, etc.
+
 # GitHub
 
 ## How to Commit Changes:
@@ -122,12 +125,12 @@ Console Commands:
 
 # CSS
 
-## Rule Sets
+### Rule Sets
 - Padding --> between content and border
 - Margin --> space between two blocks
 - hsl --> hue, saturation and light (hue, saturation, light)
 
-## Fonts, Animation, Practice
+### Fonts, Animation, Practice
 - Fonts
     - San Serif - only major strokes
     - Serif - minor strokes off major strokes
@@ -153,7 +156,7 @@ Console Commands:
     - :root --> a selector that assigns attributes it holds to all other selectors
     - !IMPORTANT --> decorator that forces an attribute to take priority
 
-## Responsive, grid, flex
+### Responsive, grid, flex
 - Float --> makes something go to a certain side of the page (left or right)
     - right is also same as inline-end (sends it to the end of the text - so in arabic inline-end would be left)
     - inline-start is the opposite equivalent
@@ -166,14 +169,14 @@ Console Commands:
         - flex: 0 means that you don't want it to flex at all
         - basis: the number of pixels you add on to the flex (which is a fractional unit) after the flex is given
 
-## CSS Debugging, Frameworks, Simon
+### CSS Debugging, Frameworks, Simon
 - Frameworks:
     - the bootstrap stylesheet is linked under the head element
     - the javascript is linked at the end of your body element
 
 # JavaScript
 
-## General Notes
+### General Notes
 - Officially called ECMAScript
 - Inspired by Scheme
 - Interpreted
@@ -190,7 +193,7 @@ Console Commands:
         - "let x = 1"
         - OR "const" z = 4
 
-## Types, Operators, Conditionals & Loops
+### Types, Operators, Conditionals & Loops
 - Types
     - null = empty value (but it is a null object)
     - undefined = undefined variable (truly not an object or type)
@@ -210,6 +213,8 @@ Console Commands:
     - equality -> "==="
     - and -> "&&"
     - or -> "||"
+        - or stops as soon as it reaches something that's truthy
+        - returns whatever actually satisfied the expression (whatever's truthy)    
 - Conditionals
     - falsy (false, 0, -0, '', NaN, null, undefined)
     - truthy = !falsy
@@ -223,7 +228,7 @@ Console Commands:
         - program will continue on to next case without a break
         - default is the case that runs given that it matches none of the case requirements
 
-## Functions, objects, classes, JSON
+### Functions, objects, classes, JSON
 - Functions:
     - Syntax -> function name(parameter) {}
     - Functions are primary types in JS
@@ -244,7 +249,10 @@ Console Commands:
     - Closures:
         - A function and its surrounding state when it got created
 
-## Regex, rest/spread, destructure, exception
+### Regex, rest/spread, destructure, exception
+- Strings:
+    - TemplateLiterals:
+        - use the escape sequence ${} to insert actuall JavaScript code in the string --> like an fstring in python
 - Regex:
     - objRex syntax --> new RegExp('cat.?', 'i')
         - the 'i' means it's case insensitive
@@ -265,3 +273,9 @@ Console Commands:
         - to reduce just part of an array:
             - the third parameter is the index of array you're on; use that
             - more conventional way is to slice your array first and then use that sliced array
+    - .filter() filters/returns an array with the numbers that meet the provided filter/condition
+    - .some() returns true if any one number (some number) meets the provided condition
+- Exceptions:
+    - Put a try block first, followed by a catch or finally that catches the error
+    - Only throw exceptions that are trully exceptional
+        - Don't use exceptions to control the flow of your code
