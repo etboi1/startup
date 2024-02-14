@@ -257,3 +257,11 @@ Console Commands:
     - basically a vector in css, a list in python
     - .push() adds to the end of the array
     - .pop() removes an item from the end of the array
+    - .map()
+        - the parameter is a function that tells the map function how to link each value in the array to a new array
+        - EX: array.map((n) => n * 100)
+            - this would create a new array with each value from the og array corresponding to a number * 100
+    - .reduce() reduce averything in the array down to one thing
+        - to reduce just part of an array:
+            - the third parameter is the index of array you're on; use that
+            - more conventional way is to slice your array first and then use that sliced array
