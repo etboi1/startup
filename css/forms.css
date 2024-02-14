@@ -1,3 +1,7 @@
+html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 body {
     display: flex;
     flex-direction: column;
@@ -26,6 +30,11 @@ select {
     margin-bottom: 5px;
     border: navy solid 1px;
     border-radius: 4px;
+    padding: 5px;
+}
+
+select:focus {
+    outline: navy solid 1.5px;
 }
 
 textarea {
@@ -36,12 +45,21 @@ textarea {
     border-radius: 4px;
 }
 
+textarea:focus {
+    outline: navy solid 1.5px;
+}
+
 input {
     width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
     border: navy solid 1px;
     border-radius: 4px;
+    padding: 5px;
+}
+
+input:focus {
+    outline: navy solid 1.5px;
 }
 
 .button {
