@@ -90,6 +90,10 @@ footer {
     }
 }
 
+.login-button {
+    
+}
+
 @media (max-height: 100%) {
     header {
       display: flex;

@@ -188,3 +188,15 @@ footer {
 .goaltitles {
    font: bolder;
 }
+
+@media (max-height: 100%) {
+   header {
+     display: flex;
+   }
+   footer {
+     display: flex;
+   }
+   main {
+     flex: 1;
+   }
+ }
