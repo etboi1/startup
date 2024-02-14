@@ -205,7 +205,7 @@ footer {
 .button:hover {
    background-color: white;
    color: navy;
-   border: navy;
+   border: navy 1px solid;
 }
 
 @media (max-height: 100%) {
