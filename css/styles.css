@@ -75,6 +75,7 @@ body {
    width: 100%;
    padding: 0;
    margin: 0;
+   position: sticky;
 }
 
 .navtitle {
@@ -182,4 +183,8 @@ footer {
 
 .center-text {
    text-align: center;
+}
+
+.goaltitles {
+   font: bolder;
 }
