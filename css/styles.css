@@ -108,7 +108,7 @@ body {
       transition: .25s;
    }
    a:hover {
-      background-color: rgba(156, 211, 255, 0.7);
+      background-color: #e7f1ff;
       color: navy;
       border-radius: 8px;
    }
@@ -216,8 +216,8 @@ footer {
    border: navy 1px solid;
 }
 
-.fix-color {
-   color: #212529;
+.fix-header {
+   margin: 10px;
 }
 
 .fix-width {
