@@ -12,7 +12,8 @@ body {
     justify-content: center;
     align-items: center;
     color: white;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family:Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     margin: 0;
 }
 
