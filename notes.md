@@ -184,7 +184,7 @@ Console Commands:
 - Most popular programing language in the world
 - Three ways to add js to html file:
     - Script attribute - put the js directly in to the attribute tag of the element using it
-    - Script tag - ass a script tag after the body tag and put your js in that
+    - Script tag - add a script tag after the body tag and put your js in that
         - You need to put it after the body tag so that if it uses any of the html in the file, that html has already been rendered
 - Put semicolons at the end of statements, curly brackets for loops and functions
 - Name js file "main.js"
