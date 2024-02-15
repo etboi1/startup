@@ -49,9 +49,12 @@ For this deliverable, I built the crude structure of my application using HTML.
 For this deliverable I properly styled the application into its final appearance.
 
 - **Header, footer and main content body on most pages** - the pages for creating goals and sharing them are intended to be more like pop-ups, so there are no footers on those. 
-- **Navigation elements** - I dropped text-decorations (underlines) and changed colors for all anchor elements. I also changed the background and text colors when you hover over all anchor elements.
-- **Responsive to window resizing** - my app looks appropriate on all window sizes and devices.
-- **Application elements** - I tried to keep a good-looking and consistent color scheme. Used good contrast and whitespace (or just negative space on pages that aren't white).
+- **Navigation elements** - I dropped text-decorations (underlines) and changed colors for all anchor elements. I also changed the background and text colors when you hover over all anchor elements. Obviously, there was also a lot of other from-scratch css I wrote to style the navbar appropriately in a flexbox.
+- **Responsive to window resizing** - my app looks appropriate on all window sizes and devices. There is some break-down as the window size gets really small, but I figured it was good enough.
+- **Application elements** - I tried to keep a good-looking and consistent color scheme. Used good contrast and whitespace (or just negative space on pages that aren't white, such as the login page). I used a wide variety of elements including:
+    - Accordions: incorporated using the Bootstrap CSS Framework on the personal and shared goals pages
+    - Buttons: used from-scratch css to make good-looking buttons that changed background and border color upon hovering over them
+    - Inputs: including textareas, selects, etc. I resized these, changed the colors and the response when a user selects one
 - **Application text content** - Consistent fonts as the same font family is used across all pages. Purposely did not use a font with serifs because it looked old and  ghetto.
 - **Application images** - The image on the front page is responsive to window resizing. I also added a border around it.
 <!-- ## JavaScript Deliverable
