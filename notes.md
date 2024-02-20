@@ -282,3 +282,23 @@ Console Commands:
     - Put a try block first, followed by a catch or finally that catches the error
     - Only throw exceptions that are trully exceptional
         - Don't use exceptions to control the flow of your code
+
+### Promises, Async/Await
+- JS is single-threaded, meaning that's the only thing that tab can do
+    - because of this, everything must be asynchronous
+    - Asynchronous (in part) means it's not running on the main HTML rendering thread
+        - there are essentially two different threads operated
+    - setTimeout() is an example of asynchronous programming
+- Promise - this is how you write your own asynchronous programs
+    - Three possible states:
+        - pending - currently running asynchronously
+        - fulfilled - completed successfully
+        - rejected - failed to complete
+- async/await
+    - async is corresponding with await, and it is a wrapper around promise
+        - async is a prefix that makes a promise and wraps a function in it
+    - await makes the program wait until the thing after it is done running before it moves on
+    - putting async before it makes it continue to run
+    - Rules for using await:
+        - top level module function OR
+        - called from an async function
