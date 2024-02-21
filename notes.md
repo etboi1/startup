@@ -302,3 +302,10 @@ Console Commands:
     - Rules for using await:
         - top level module function OR
         - called from an async function
+
+### Debugging, Simon, Start-Up
+- Debugging using web browser console:
+    - errors will appear in the console --> click on the error to open up the javascript with the error highlighted/underlined
+    - add breakpoints like in pycharm
+    - click the arrow pointing down to a circle to step into code
+    - hover cursor over a variable to see what that variable is currently equal to
