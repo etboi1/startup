@@ -309,3 +309,10 @@ Console Commands:
     - add breakpoints like in pycharm
     - click the arrow pointing down to a circle to step into code
     - hover cursor over a variable to see what that variable is currently equal to
+    - Things about JS to remember:
+        - won't throw errors for type conversions
+        - won't throw errors for index erros
+        - Will throw errors for:
+            - methods called on nulls
+            - referencing things that don't exist/haven't been defined
+            - trying to convert a constant variable
