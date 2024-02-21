@@ -283,6 +283,11 @@ Console Commands:
     - Only throw exceptions that are trully exceptional
         - Don't use exceptions to control the flow of your code
 
+### Login, Local Storage
+- Redirect using window.location.href = "html to redirect to"
+- Local storage is saved only on that specific browser on that specific machine
+    - thus, local storage will only be used to simulate an actual login process
+
 ### Promises, Async/Await
 - JS is single-threaded, meaning that's the only thing that tab can do
     - because of this, everything must be asynchronous
