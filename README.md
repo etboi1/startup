@@ -57,8 +57,16 @@ For this deliverable I properly styled the application into its final appearance
     - Inputs: including textareas, selects, etc. I resized these, changed the colors and the response when a user selects one
 - **Application text content** - Consistent fonts as the same font family is used across all pages. Purposely did not use a font with serifs because it looked old and  ghetto.
 - **Application images** - The image on the front page is responsive to window resizing. I also added a border around it.
-<!-- ## JavaScript Deliverable
-## Service Deliverable
+
+## JavaScript Deliverable
+For this deliverable I implemented my JavaScript so that the logic for all interactions with the primary user work. In addition, I added placeholders for future technologies.
+
+- **Login** - When you press the login button, it takes you to the personal goals page through the use of javascript. In addition, the username and password info is stored in local storage. Later, it will be stored in a database
+- **Database**
+- **WebSocket**
+- **Application Logic**
+
+<!-- ## Service Deliverable
 ## DB/Login Deliverable
 ## WebSocket Deliverable
 ## React Deliverable -->
