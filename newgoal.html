@@ -11,7 +11,7 @@
         <h1>Create a New Goal!</h1>
     </header>
     <main>
-        <form action="goals.html">
+        <div class="form">
             <label for="title">Goal Title:</label><input id="goalTitle" class="goal-title" type="text" placeholder="Goal Title...">
             <label for="goaltype">Goal Type:</label><select name="goalType" id="goaltype">
                 <option>Physical</option>
@@ -25,7 +25,7 @@
             <label for="completiondate">Milestone Date:</label><input id="milestoneDate" type="datetime-local" name="varCompletiondate" id="completiondate">
             <label for="title">Milestone Title:</label><input id="milestoneTitle" type="text" placeholder="Milestone...">
             <button onclick="addGoal()" class="button" type="submit" id="newgoal">Create Goal</button>
-        </form>
+        </div>
     </main>
 </body>
 </html>
