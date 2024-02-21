@@ -12,19 +12,19 @@
     </header>
     <main>
         <form action="goals.html">
-            <label for="title">Goal Title:</label><input class="goal-title" type="text" placeholder="Goal Title...">
-            <label for="goaltype">Goal Type:</label><select name="goaltype" id="goaltype">
+            <label for="title">Goal Title:</label><input id="goalTitle" class="goal-title" type="text" placeholder="Goal Title...">
+            <label for="goaltype">Goal Type:</label><select name="goalType" id="goaltype">
                 <option>Physical</option>
                 <option>Educational</option>
                 <option>Occupational</option>
                 <option>Hobbies</option>
                 <option>Social</option>
             </select>
-            <label for="description">Goal Description:</label><textarea name="description" placeholder="Goal Description..."></textarea>
-            <label for="completiondate">Target Completion Date:</label><input type="datetime-local" name="varCompletiondate" id="completiondate">
-            <label for="completiondate">Milestone Date:</label><input type="datetime-local" name="varCompletiondate" id="completiondate">
-            <label for="title">Milestone Title:</label><input type="text" placeholder="Milestone...">
-            <button class="button" type="submit" id="newgoal">Create Goal</button>
+            <label for="description">Goal Description:</label><textarea id="goalDescription" name="description" placeholder="Goal Description..."></textarea>
+            <label for="completiondate">Target Completion Date:</label><input id="targetCompletionDate" type="datetime-local" name="varCompletiondate" id="completiondate">
+            <label for="completiondate">Milestone Date:</label><input id="milestoneDate" type="datetime-local" name="varCompletiondate" id="completiondate">
+            <label for="title">Milestone Title:</label><input id="milestoneTitle" type="text" placeholder="Milestone...">
+            <button onclick="addGoal()" class="button" type="submit" id="newgoal">Create Goal</button>
         </form>
     </main>
 </body>
