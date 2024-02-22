@@ -2,7 +2,7 @@ function addGoal() {
     const titleEl = document.querySelector("#goalTitle");
     localStorage.setItem("goalTitle", titleEl.value);
     const typeEl = document.querySelector("#goalType");
-    localStorage.setItem("goalTitle", typeEl.value);
+    localStorage.setItem("goalType", typeEl.value);
     const descriptionEl = document.querySelector("#goalDescription");
     localStorage.setItem("goalDescription", descriptionEl.value);
     const completionDateEl = document.querySelector("#targetCompletionDate");
@@ -10,6 +10,6 @@ function addGoal() {
     const milestoneDateEl = document.querySelector("#milestoneDate");
     localStorage.setItem("milestoneDate", milestoneDateEl.value);
     const milestoneTitleEl = document.querySelector("#milestoneTitle");
-    localStorage.setItem("milestoneTitle", milestoneDateEl.value);
+    localStorage.setItem("milestoneTitle", milestoneTitleEl.value);
     window.location.href = "goals.html";
 }
