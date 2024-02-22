@@ -1,4 +1,4 @@
-function addGoal() {
+function addInfo() {
     const titleEl = document.querySelector("#goalTitle");
     localStorage.setItem("goalTitle", titleEl.value);
     const typeEl = document.querySelector("#goalType");
@@ -12,4 +12,12 @@ function addGoal() {
     const milestoneTitleEl = document.querySelector("#milestoneTitle");
     localStorage.setItem("milestoneTitle", milestoneTitleEl.value);
     window.location.href = "goals.html";
+}
+
+function addGoal() {
+
+}
+
+function populateGoal(element) {
+    
 }
