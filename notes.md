@@ -335,8 +335,12 @@ Console Commands:
 
 ### Javascript Stuff:
 - preicrement = putting a ++ or -- before a variable --> increments it before using it
+- you just put the characters directly in for the key and value
+    - key and value seperated by a colon
 
 ### DOM:
 - textContent property --> sets the child text for an element
     - gets rid of the children of that element and replaces them with a newly created text node child
     - becomes the only child of that element and is a text representation
+
+### Review RegEx Syntax (Maybe just paste it here):
