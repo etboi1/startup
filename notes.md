@@ -321,3 +321,10 @@ Console Commands:
             - methods called on nulls
             - referencing things that don't exist/haven't been defined
             - trying to convert a constant variable
+
+
+# Midterm Notes:
+
+### JSON:
+- keys must always be a string (double quotes)
+- undefined isn't possible in JSON, because you have to define something first before you can use it
