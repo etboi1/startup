@@ -328,3 +328,15 @@ Console Commands:
 ### JSON:
 - keys must always be a string (double quotes)
 - undefined isn't possible in JSON, because you have to define something first before you can use it
+
+### DNS/Server Stuff:
+- use CNAME DNS record type to point to another DNS record
+    - maps one host name to the ip address of the other
+
+### Javascript Stuff:
+- preicrement = putting a ++ or -- before a variable --> increments it before using it
+
+### DOM:
+- textContent property --> sets the child text for an element
+    - gets rid of the children of that element and replaces them with a newly created text node child
+    - becomes the only child of that element and is a text representation
