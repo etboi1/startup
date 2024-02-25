@@ -1,8 +1,12 @@
 function saveGoal() {
-    let goals = [[],[],[],[],[]];
-    const goalsText = localStorage.getItem('goals');
+
+}
+
+function saveGoalHelper(goalType) {
+    let `${goalType}` = [[],[],[],[],[]];
+    const goalsText = localStorage.getItem(`${goalType}`);
     if (goalsText) {
-        goals = JSON.parse(goalsText);
+        `${goalType}` = JSON.parse(goalsText);
     }
 
     const titleEl = document.querySelector("#goalTitle");
@@ -12,9 +16,9 @@ function saveGoal() {
     const milestoneDateEl = document.querySelector("#milestoneDate");
     const milestoneTitleEl = document.querySelector("#milestoneTitle");
 
-    goals = this.updateGoals(goals, typeEl, titleEl, descriptionEl, completionDateEl, milestoneDateEl, milestoneTitleEl);
+    `${goalType}` = this.updateGoals(goals, typeEl, titleEl, descriptionEl, completionDateEl, milestoneDateEl, milestoneTitleEl);
 
-    localStorage.setItem('goals', JSON.stringify(goals));
+    localStorage.setItem('goals', JSON.stringify(`${goalType}`);
     
     window.location.href = "goals.html";
 }
