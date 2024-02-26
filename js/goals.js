@@ -23,15 +23,27 @@ function onInit() {
                 secondChild2.innerHTML = `Due Date - ${dueDate}`;
                 let secondChild3 = document.createElement('span');
                 secondChild3.innerHTML = `${milestoneTitle} - ${milestoneDate}`;
+                let secondChild4 = document.createElement('div');
+                secondChild4.addEventListener('click', sendToProgress);
+                let thirdChild = document.createElement('button');
+                thirdChild.classList.add("button");
+                thirdChild.type = "submit";
+                thirdChild.innerHTML = 'Report Progress'
 
                 // actually add them to the correct parent elements
                 goalOuterContainerEl.appendChild(firstChild);
                 firstChild.appendChild(secondChild1);
                 firstChild.appendChild(secondChild2);
                 firstChild.appendChild(secondChild3);
+                firstChild.appendChild(secondChild4);
+                secondChild4.appendChild(thirdChild);
             }
         }
     }
+}
+
+function sendToProgress() {
+    window.location.href = "progress.html"
 }
 
 onInit()
