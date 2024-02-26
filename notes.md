@@ -367,3 +367,25 @@ Console Commands:
     - Layer = Application
         - HTTPS
         - Purpose = Functionality like web browsing
+
+### Servers:
+- a computer that serves up information
+    - a web server is a server that serves up web information
+- servers may fulfill requests by talking to other servers and aggregating information
+- Ports:
+    - IP addresses can find the server, but there are multiple ports to make the innitial connection
+    - every major protocol has a different port
+    - Port 443 is secure HTTP port
+- Gateway:
+    - For us, our gateway is Caddy
+    - the gateway routes the request to the appropriate port
+        - so we only let requessts in through certain ports, and they go to caddy, then caddy searches for the requested file (or index) and sends it back
+
+### DNS:
+- TLD = Top Level Domain
+- DNS Record Types:
+    - A/AAAA --> Address. Specific IP Address
+    - CNAME --> Canonical Name. alias
+    - NS --> Name Server. Authority for queries and proof of ownership
+    - TEXT --> Metadata. Used for policies and verification
+    - SOA ---> Start of Authority. Propogation information
