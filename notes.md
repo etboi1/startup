@@ -344,3 +344,26 @@ Console Commands:
     - becomes the only child of that element and is a text representation
 
 ### Review RegEx Syntax (Maybe just paste it here):
+
+# Web Services
+
+## Servers & DNS:
+
+### How does the internet work?
+- loose coupling of a bunch of servers
+- DNS = Domain Name System:
+    - knows how to map domain names to ip addresses
+- Sending data over the network:
+    - Layer = Link
+        - Purpose = physical connection
+    - Layer = Internet 
+        - IP 
+        - Purpose = establishing connections & breaking data into little packets
+    - Layer = Transport
+        - TCP/UDP 
+            - Purpose = moving connection information packets
+        - TCP --> makes sure data is sent across in exact order it was sent (pretty expensive)
+        - UDP --> makes sure packets are sent
+    - Layer = Application
+        - HTTPS
+        - Purpose = Functionality like web browsing
