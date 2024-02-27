@@ -11,7 +11,7 @@
         <h1>Share a Goal!</h1>
     </header>
     <main>
-        <form action="sharegoals.html">
+        <div>
             <label for="title">Goal Title:</label><select name="goalname" id="goalname">
                 <optgroup label="Physical Goals">
                     <option>Gain 20 Pounds</option>
@@ -34,9 +34,11 @@
                     <option>Goal 2 Name</option>
                 </optgroup>
             </select>
-            <label for="user">Type Username of User to Share with:</label><input type="text">
-            <button class="button" type="submit" id="sendgoal">Share Goal</button>
-        </form>
+            <label for="user">Type Username of Users(s) to Share with:</label><input type="text" id="users" placeholder="Usernames, seperated by commas (eg. john1, goalcrusher32)">
+            <button onclick="shareGoal()" class="button" type="submit" id="sendgoal">Share Goal</button>
+        </div>
     </main>
+
+    <script src="js/sendgoals.js"></script>
 </body>
 </html>
