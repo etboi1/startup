@@ -45,7 +45,11 @@ function onInit() {
 }
 
 function sendToProgress() {
-    window.location.href = "progress.html"
+    window.location.href = "progress.html";
 }
 
-onInit()
+function sendToSharedGoals() {
+    window.location.href = "sharegoals.html";
+}
+
+onInit();
