@@ -53,3 +53,22 @@ function sendToSharedGoals() {
 }
 
 onInit();
+
+usernames = ['john17', 'alma34', 'jmbohee29', '2nephi2', '3nephi11', 'thefununcle1', 'goalreacher'];
+
+setInterval(() => {
+    const outerNotification = document.getElementById('outer-notification');
+    
+    setTimeout(() => {
+        const i = Math.floor(Math.random() * usernames.length);
+        const actualNotification = document.createElement('button');
+        actualNotification.classList.add('notification-inner');
+        actualNotification.addEventListener('click', sendToSharedGoals);
+        actualNotification.setAttribute('id', 'notification-inner');
+        actualNotification.innerHTML = `${usernames[i]} has shared a goal with you!`
+
+        outerNotification.appendChild(actualNotification);
+    }, 10000)
+
+    outerNotification.innerHTML = '';
+}, 20000)

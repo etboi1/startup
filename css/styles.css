@@ -16,10 +16,13 @@ body {
    align-items: center;
 }
 
-button.notification {
-   position:absolute;
+.notification-outer {
+   position: absolute;
    top: 65px;
    right: 5px;
+}
+
+button.notification-inner {
    padding: 10px;
    border-color: navy;
    border-style: solid;
@@ -29,7 +32,7 @@ button.notification {
    color: navy;
 }
 
-button.notification:hover {
+button.notification-inner:hover {
    background-color: rgba(156, 211, 255, 0.7);
    transition: .25s;
 }
