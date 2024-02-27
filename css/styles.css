@@ -17,9 +17,10 @@ body {
 }
 
 .notification-outer {
-   position: absolute;
-   top: 65px;
-   right: 5px;
+   position: fixed;
+   top: 5px;
+   left: 5px;
+   z-index: 1;
 }
 
 button.notification-inner {
@@ -28,12 +29,12 @@ button.notification-inner {
    border-style: solid;
    border-width: 2px;
    border-radius: 5px;
-   background-color: #e7f1ff;
+   background-color: rgba(156, 211, 255, 0.85);
    color: navy;
 }
 
 button.notification-inner:hover {
-   background-color: rgba(156, 211, 255, 0.7);
+   background-color: #e7f1ff;
    transition: .25s;
 }
 
