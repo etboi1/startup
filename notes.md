@@ -344,6 +344,25 @@ Console Commands:
     - becomes the only child of that element and is a text representation
 
 ### Review RegEx Syntax (Maybe just paste it here):
+- / - Start or end a regular expression 
+- \w - Any alphanumeric character 
+- \d - any digit 
+- . - wildcard 
+- \. - actually just a dot 
+- [abc] - matches a single a, b, or c character 
+- [^abc] - match any single character other than a, b, or c 
+- [A-C] - match any single character from A to C (all the above with brackets work for numbers too) 
+- {n} - Match n number of repetitions - ex: [a-c]{3} matches 3 repetitions of a character from a to c 
+- {m,n} - Match m to n number of repetitions - ex: z{2,3} matches 2 - 3 z's in a string 
+- * - zero or more of a given character - example: a* for zero or more of the a character 
+- + - one or more of a given character - example: a+ for one or more of the a character 
+- ? - put this after a character to make it optional 
+- \s - any whitespace character (return, newline, tab, space) 
+- ^ - Line begins with (put before selector) 
+- $ - Line ends with (put after selector) 
+- () - Only capture what is in the parentheses 
+- (()) - Will capture what is inside the second set of parentheses as a separate capture group 
+- (|) - captures what is within the parentheses on either the right or the left of the line thingy
 
 # Web Services
 
