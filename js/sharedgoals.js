@@ -24,4 +24,31 @@ function onShareInit() {
     }
 }
 
+function onSharedInit() {
+    let sharedWithMe = {'goalreacher': [{'goalTitle': 'Lose 10 Pounds', 'progressStatus': 'On Track', 'targetCompletionDate': '2024-03-02'}, {'goalTitle': 'Get an A in Math', 'progressStatus': 'Hit Milestone', 'targetCompletionDate': '2024-05-10'}], 
+    'jmbohee29': [{'goalTitle': 'Run a 5 Minute Mile', 'progressStatus': 'Behind', 'targetCompletionDate': '2024-06-30'}]}
+    for ([user, sharedGoals] of Object.entries(sharedWithMe)) {
+        const correctAccordion = document.getElementById('sharedWithMe');
+        const innerContainerEl = document.createElement('div')
+        innerContainerEl.classList.add('inner-container');
+        correctAccordion.appendChild(innerContainerEl);
+        const userNameEl = document.createElement('strong');
+        userNameEl.innerHTML = `${user}`;
+        innerContainerEl.appendChild(userNameEl);
+
+        for (let i = 0; i < sharedGoals.length; i++) {
+            const goalTitle = sharedGoals[i].goalTitle;
+            const progressStatus = sharedGoals[i].progressStatus;
+            const dueDate = sharedGoals[i].targetCompletionDate;
+            
+            const goalInfoEl = document.createElement('span');
+            goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate}) - ${progressStatus}`;
+
+            innerContainerEl.appendChild(goalInfoEl);
+        }
+    }
+}
+
+onSharedInit()
+
 onShareInit()
