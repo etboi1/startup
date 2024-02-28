@@ -62,9 +62,9 @@ For this deliverable I properly styled the application into its final appearance
 For this deliverable I implemented my JavaScript so that the logic for all interactions with the primary user work. In addition, I added placeholders for future technologies.
 
 - **Login** - When you press the login button, it takes you to the personal goals page through the use of javascript. In addition, the username and password info is stored in local storage. Later, it will be stored in a database
-- **Database**
-- **WebSocket**
-- **Application Logic**
+- **Database** - A lot of data needs to be saved for this application. This includes creating new personal goals and storing them, sharing goals and storing which goals are shared, and updating progress to a goal. I utilized JSON objects stored in local storage as a placeholder for the eventual database. I also saved the username and password in a variable in local storage
+- **WebSocket** - When another user shares a goal with the current user, they will be notified via WebSocket. This is simulated by use of a setInterval and setTimeout function. Every 20 seconds, a notification is displayed saying that a user (taken from a fake list of users for the time being) has shared a goal with you. The notification remains for 10 seconds and then dissappears. If you click on the notification, it takes you to the shared goals page.
+- **Application Logic** - Most of the application logic is centered around the databases and displaying information from the databases. The newgoal.html, sendgoals.html, and progress.html pages correctly store the entered information into local storage, and then upon initialization, that information is retrieved and correctly displayed in the accordions on the goals.html and sharegoals.html pages. In addition, Bootstrap JavaScript was used to construct the accordions.
 
 <!-- ## Service Deliverable
 ## DB/Login Deliverable
