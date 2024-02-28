@@ -366,8 +366,6 @@ Console Commands:
 
 # Web Services
 
-## Servers & DNS:
-
 ### How does the internet work?
 - loose coupling of a bunch of servers
 - DNS = Domain Name System:
@@ -408,3 +406,24 @@ Console Commands:
     - NS --> Name Server. Authority for queries and proof of ownership
     - TEXT --> Metadata. Used for policies and verification
     - SOA ---> Start of Authority. Propogation information
+
+### Fetch:
+- fetch request something from the internet. The response object is returned
+- You can use methods on the object:
+    - .text --> changes the request/response into text string
+    - .json --> changes the respons into a json object
+- this is one way you can access others' APIs
+- servers can also make fetch requests
+
+### URL:
+- Uniform Resource Locator
+- Urls have the following elements: scheme, domain, port, path, parameter, anchor
+    - scheme (https://), domain (byu.edu), port (:443), path (/api/city), parameters (?q=pro), anchor (#3)
+
+### Status Codes:
+- 2xx - good 
+    - 200 Success, 204 no content
+- 3xx
+    - 301/302 redirect, 304 not modified
+- 4xx - user made a bad request
+    - 400 bad request, 404 not found, 403 forbidden
