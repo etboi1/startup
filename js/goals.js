@@ -59,7 +59,9 @@ function sendToProgress() {
         if (type === goalType) {
             for (let i = 0; i < goals.length; i++) {
                 if (goals[i].goalTitle === goalTitle) {
-                    localStorage.setItem('mileStoneTitle', goals[i].milestoneTitle);
+                    localStorage.setItem('progressingType', goalType);
+                    localStorage.setItem('progressingTitle', goalTitle);
+                    localStorage.setItem('milestoneTitle', goals[i].milestoneTitle);
                     localStorage.setItem('milestoneDate', goals[i].milestoneDate);
                 }
             }
