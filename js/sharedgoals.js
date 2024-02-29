@@ -1,4 +1,8 @@
 function onShareInit() {
+    let username = localStorage.getItem('username');
+    const usernameEl = document.querySelector('h8');
+    usernameEl.textContent = `Welcome ${username}!`;
+
     let sharedGoals = localStorage.getItem('sharedGoals');
     sharedGoals = JSON.parse(sharedGoals);
     if (sharedGoals) {

@@ -1,4 +1,8 @@
 function onInit() {
+    let username = localStorage.getItem('username');
+    const usernameEl = document.querySelector('h8');
+    usernameEl.textContent = `Welcome ${username}!`;
+    
     if (localStorage.getItem('goals')) {
         let allGoals = localStorage.getItem('goals');
         allGoals = JSON.parse(allGoals);
