@@ -11,8 +11,8 @@
         <h1>How is Your Goal Going?</h1>
     </header>
     <main>
-        <p>Your milestone date for (your milestone) is: 1/31/2025 8:00 AM. Report status below:</p>
-        <form action="goals.html">
+        <!-- <p>Your milestone date for (your milestone) is: 1/31/2025 8:00 AM. Report status below:</p> -->
+        <div>
             <label for="status"></label>
             <select name="status">
                 <option>On Track</option>
@@ -20,8 +20,9 @@
                 <option>Behind</option>
                 <option>Missed Milestone</option>
             </select>
-            <button class="button" type="submit">Submit</button>
-        </form>
+            <button class="button" type="submit" onclick="updateProgress()">Submit</button>
+        </div>
     </main>
+    <script src="js/progress.js"></script>
 </body>
 </html>
