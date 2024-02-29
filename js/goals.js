@@ -45,6 +45,26 @@ function onInit() {
 }
 
 function sendToProgress() {
+    const buttonDiv = this;
+    const innerContainer = buttonDiv.parentElement;
+    const outerContainer = innerContainer.parentElement;
+    const accordianId = outerContainer.id;
+    const goalType = accordianId.replace(/Goals$/, '')
+    const strong = innerContainer.children[0];
+    const goalTitle = strong.textContent;
+
+    allGoals = localStorage.getItem('goals');
+    allGoals = JSON.parse(allGoals);
+    for ([type, goals] of Object.entries(allGoals)) {
+        if (type === goalType) {
+            for (let i = 0; i < goals.length; i++) {
+                if (goals[i].goalTitle === goalTitle) {
+                    localStorage.setItem('mileStoneTitle', goals[i].milestoneTitle);
+                    localStorage.setItem('milestoneDate', goals[i].milestoneDate);
+                }
+            }
+        }
+    }
     window.location.href = "progress.html";
 }
 
