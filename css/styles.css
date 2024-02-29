@@ -107,6 +107,17 @@ button.notification-inner:hover {
    }
 }
 
+.username {
+   flex: .5;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+h8 {
+   text-align: center;
+}
+
 main {
    flex: 1;
    display: flex;
