@@ -427,3 +427,12 @@ Console Commands:
     - 301/302 redirect, 304 not modified
 - 4xx - user made a bad request
     - 400 bad request, 404 not found, 403 forbidden
+
+### Node.js
+- NVM --> node version manager
+- Node --> JavaScript runtime
+- NPM --> node package manager
+- the package to create an http server is automatically included in node.js
+
+### Express
+- Point of express: wrap the node.js to make it easier to write it
