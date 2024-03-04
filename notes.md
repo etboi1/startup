@@ -433,6 +433,14 @@ Console Commands:
 - Node --> JavaScript runtime
 - NPM --> node package manager
 - the package to create an http server is automatically included in node.js
+- npm init -y --> creates a node package with default settings
+- require - sommon node.js syntax for importing one package into another
 
 ### Express
 - Point of express: wrap the node.js to make it easier to write it
+- General notes:
+    - must return a response somewhwer, or the node will never stop running
+- Middleware:
+    - 
+- 
+
