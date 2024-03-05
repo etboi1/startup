@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REACH! - Share a Goal</title>
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <header>
+        <h1>Share a Goal!</h1>
+    </header>
+    <main>
+        <div>
+            <label for="title">Goal Title:</label><select name="goalname" id="goalname">
+                <optgroup label="Physical Goals" id="PhysicalGoals">
+                    <!-- <option>Gain 20 Pounds</option>
+                    <option>Goal 2 Name</option> -->
+                </optgroup>
+                <optgroup label="Educational Goals" id="EducationalGoals">
+                    <!-- <option>Goal 1 Name</option>
+                    <option>Goal 2 Name</option> -->
+                </optgroup>
+                <optgroup label="Occupational Goals" id="OccupationalGoals">
+                    <!-- <option>Goal 1 Name</option>
+                    <option>Goal 2 Name</option> -->
+                </optgroup>
+                <optgroup label="Hobby Goals" id="HobbiesGoals">
+                    <!-- <option>Goal 1 Name</option>
+                    <option>Goal 2 Name</option> -->
+                </optgroup>
+                <optgroup label="Social Goals" id="SocialGoals">
+                    <!-- <option>Goal 1 Name</option>
+                    <option>Goal 2 Name</option> -->
+                </optgroup>
+            </select>
+            <label for="user">Type Username of Users(s) to Share with:</label><input type="text" id="users" placeholder="Usernames, seperated by commas (eg. john1, goalcrusher32)">
+            <button onclick="shareGoal()" class="button" type="submit" id="sendgoal">Share Goal</button>
+        </div>
+    </main>
+
+    <script src="js/sendgoals.js"></script>
+</body>
+</html>

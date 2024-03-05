@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REACH! - Add a Goal</title>
+    <link rel="stylesheet" href="css/forms.css">
+</head>
+<body>
+    <header>
+        <h1>Create a New Goal!</h1>
+    </header>
+    <main>
+        <div class="form">
+            <label for="title">Goal Title:</label><input id="goalTitle" class="goal-title" type="text" placeholder="Goal Title...">
+            <label for="goaltype">Goal Type:</label><select name="goalType" id="goalType">
+                <option>Physical</option>
+                <option>Educational</option>
+                <option>Occupational</option>
+                <option>Hobbies</option>
+                <option>Social</option>
+            </select>
+            <label for="description">Goal Description:</label><textarea id="goalDescription" name="description" placeholder="Goal Description..."></textarea>
+            <label for="completiondate">Target Completion Date:</label><input id="targetCompletionDate" type="date" name="varCompletiondate" id="completiondate">
+            <label for="completiondate">Milestone Date:</label><input id="milestoneDate" type="date" name="varCompletiondate" id="completiondate">
+            <label for="title">Milestone Title:</label><input id="milestoneTitle" type="text" placeholder="Milestone...">
+            <button onclick="saveGoal()" class="button" type="submit" id="newgoal">Create Goal</button>
+        </div>
+    </main>
+
+    <script src="js/newgoal.js"></script>
+</body>
+</html>
