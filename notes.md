@@ -443,7 +443,7 @@ Console Commands:
     - must return a response somewhwer, or the node will never stop running
 - Middleware:
 
-### Service Design & CORS
+### Service Design
 - first create a diagram modeling the user interactions with eachother and with the server
     - http = client to server
     - WebSocket = both
@@ -461,3 +461,7 @@ Endpoint Design
 - Simple - Single responsibility principle
 - Documented - Open API
 
+### CORS
+- Single Origin Principle (SOP)
+- CORS
+    - 
