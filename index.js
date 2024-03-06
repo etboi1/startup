@@ -26,14 +26,18 @@ apiRouter.post(`/goals`, (req, res) => {
 });
 
 //Get Goals Shared by You
-app.get(`/shared`, (req, res) => {
+app.get(`/sharing`, (req, res) => {
     res.send(sharedGoals);
 });
 
 //Get Goals Shared With You By Other People
+app.get(`/shared`, (req, res) => {
+    res.send(sharedWithMe);
+})
 
 //Share New Goal
 
+//send index.html as the default file
 app.use((req, res) => {
     res.sendFile('index.html', {root: 'public'});
 })
