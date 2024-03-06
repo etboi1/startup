@@ -15,9 +15,15 @@ let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 //Get Goals
+app.get(`/goals`, (req, res) => {
+    res.send(goals);
+})
 
 //Submit New Goals
 
 //Get Shared Goals
+app.get(`/shared`, (req, res) => {
+    res.send(sharedGoals);
+})
 
 //Share New Goal
