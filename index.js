@@ -15,24 +15,32 @@ let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
 //Get Goals
-app.get(`/goals`, (req, res) => {
+apiRouter.get(`/goals`, (req, res) => {
     res.send(goals);
-})
+});
 
 //Submit New Goals
-app.post(`/goals`, (req, res) => {
+apiRouter.post(`/goals`, (req, res) => {
     goals = updateGoals(req.body, goals);
     res.send(goals);
-})
+});
 
 //Get Goals Shared by You
 app.get(`/shared`, (req, res) => {
     res.send(sharedGoals);
-})
+});
 
 //Get Goals Shared With You By Other People
 
 //Share New Goal
+
+app.use((req, res) => {
+    res.sendFile('index.html', {root: 'public'});
+})
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`)
+});
 
 //Function for adding a new goal
 let goals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
