@@ -447,4 +447,10 @@ Console Commands:
     - http = client to server
     - WebSocket = both
 - then consider what endpoints you need to meet the needs of those interactions
+- then consider how you can leverage the technology to come up with the most optimal design you can
+    - Transfer Protocols (http, https, udp) --> ALWAYS MAKE IT SECURE
+    - HTTP Verbs - GET, PUT, POST, DELETE
+    - MIME types - application/json, image/png
+    - HTTP headers - chache, accept, cors
+    - Data format - JSON, YAML
 
