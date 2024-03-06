@@ -1,10 +1,4 @@
-function saveGoal() {
-    let goals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
-    const goalsText = localStorage.getItem('goals');
-    if (goalsText) {
-        goals = JSON.parse(goalsText);
-    }
-
+async function saveGoal() {
     const titleEl = document.querySelector("#goalTitle");
     const typeEl = document.querySelector("#goalType");
     const descriptionEl = document.querySelector("#goalDescription");
@@ -12,20 +6,40 @@ function saveGoal() {
     const milestoneDateEl = document.querySelector("#milestoneDate");
     const milestoneTitleEl = document.querySelector("#milestoneTitle");
 
-    const newGoal = {"goalTitle": titleEl.value,
+    const newGoalData = [typeEl.value, {"goalTitle": titleEl.value,
         "goalDescription": descriptionEl.value,
         "targetCompletionDate": completionDateEl.value,
         "milestoneDate": milestoneDateEl.value,
-        "milestoneTitle": milestoneTitleEl.value}
+        "milestoneTitle": milestoneTitleEl.value}]
 
-    goals = this.updateGoals(goals, typeEl.value, newGoal);
+    try {
+        const response = await fetch('/api/goals', {
+            method: 'POST',
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify(newGoalData),
+        })
 
-    localStorage.setItem('goals', JSON.stringify(goals));
+        const goals = await response.json();
+        localStorage.setItem('goals', JSON.stringify(goals));
+    }
+    catch {
+        const goals = this.updateGoals(newGoalData);
+        localStorage.setItem('goals', JSON.stringify(goals));
+    }
    
+    //might need to remove this
     window.location.href = "goals.html";
 }
 
-function updateGoals(goals, goalType, newGoal) {
+function updateGoals(newData) {
+    let goals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
+    const goalsText = localStorage.getItem('goals');
+    if (goalsText) {
+        goals = JSON.parse(goalsText);
+    }
+
+    goalType = newData.at(0);
+    newGoal = newData.at(1);
 
     goals[goalType].push(newGoal);
 
