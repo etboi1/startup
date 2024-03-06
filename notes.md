@@ -397,6 +397,7 @@ Console Commands:
     - For us, our gateway is Caddy
     - the gateway routes the request to the appropriate port
         - so we only let requessts in through certain ports, and they go to caddy, then caddy searches for the requested file (or index) and sends it back
+- think of a service as a class --> endpoints are to servers as class methods are to classes
 
 ### DNS:
 - TLD = Top Level Domain
@@ -447,11 +448,16 @@ Console Commands:
     - http = client to server
     - WebSocket = both
 - then consider what endpoints you need to meet the needs of those interactions
-- then consider how you can leverage the technology to come up with the most optimal design you can
+- then consider how you can leverage the technology to Leverage Standards - come up with the most optimal design you can
     - Transfer Protocols (http, https, udp) --> ALWAYS MAKE IT SECURE
     - HTTP Verbs - GET, PUT, POST, DELETE
     - MIME types - application/json, image/png
     - HTTP headers - chache, accept, cors
     - Data format - JSON, YAML
-
+Endpoint Design
+- Grammatical - noun/resource based
+    - the url paths are like objects/nouns that the verbs(GET, POST, DELETE, PUT) act on
+- Readable - /store/provo/order/28502
+- Simple - Single responsibility principle
+- Documented - Open API
 
