@@ -12,21 +12,21 @@ function saveGoal() {
     const milestoneDateEl = document.querySelector("#milestoneDate");
     const milestoneTitleEl = document.querySelector("#milestoneTitle");
 
-    goals = this.updateGoals(goals, typeEl, titleEl, descriptionEl, completionDateEl, milestoneDateEl, milestoneTitleEl);
+    const newGoal = {"goalTitle": titleEl.value,
+        "goalDescription": descriptionEl.value,
+        "targetCompletionDate": completionDateEl.value,
+        "milestoneDate": milestoneDateEl.value,
+        "milestoneTitle": milestoneTitleEl.value}
+
+    goals = this.updateGoals(goals, typeEl.value, newGoal);
 
     localStorage.setItem('goals', JSON.stringify(goals));
    
     window.location.href = "goals.html";
 }
 
-function updateGoals(goals, type, title, description, completionDate, milestoneDate, milestoneTitle) {
-    const newGoal = {"goalTitle": title.value,
-        "goalDescription": description.value,
-        "targetCompletionDate": completionDate.value,
-        "milestoneDate": milestoneDate.value,
-        "milestoneTitle": milestoneTitle.value}
+function updateGoals(goals, goalType, newGoal) {
 
-    goalType = type.value;
     goals[goalType].push(newGoal);
 
     return goals;
