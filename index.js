@@ -20,10 +20,27 @@ app.get(`/goals`, (req, res) => {
 })
 
 //Submit New Goals
+app.post(`/goals`, (req, res) => {
+    goals = updateGoals(req.body, goals);
+    res.send(goals);
+})
 
-//Get Shared Goals
+//Get Goals Shared by You
 app.get(`/shared`, (req, res) => {
     res.send(sharedGoals);
 })
 
+//Get Goals Shared With You By Other People
+
 //Share New Goal
+
+//Function for adding a new goal
+let goals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
+function updateGoals(goals, newData) {
+    goalType = newData.at(0);
+    goals[goalType].push(newGoal);
+
+    return goals;
+}
+
+//Function for adding sharing a new goal
