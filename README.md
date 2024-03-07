@@ -71,11 +71,11 @@ For this deliverable I implemented my JavaScript so that the logic for all inter
         - click share goal on the "shared" page to share a new goal
 
 ## Service Deliverable
-- **Node.js/Express HTTP service**
+- **Node.js/Express HTTP service** - it has been done my lord
 - **Static middleware for frontend**
 - **Calls to third party endpoints**
-- **Backend service endpoints**
-- **Frontend calls service endpoints**
+- **Backend service endpoints** - endpoints for storing and retrieving personal and shared goals
+- **Frontend calls service endpoints** - I did this using fetch
 <!-- ## DB/Login Deliverable
 ## WebSocket Deliverable
 ## React Deliverable -->
