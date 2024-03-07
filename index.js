@@ -36,6 +36,10 @@ app.get(`/shared`, (req, res) => {
 })
 
 //Share New Goal
+apiRouter.post(`/share`, (req, res) => {
+    sharedGoals = updateSharedGoals(req.body, sharedGoals);
+    res.send(sharedGoals);
+})
 
 //send index.html as the default file
 app.use((req, res) => {
@@ -56,3 +60,9 @@ function updateGoals(goals, newData) {
 }
 
 //Function for adding sharing a new goal
+let sharedGoals = [];
+function updateSharedGoals(newShare, sharedGoals) {
+    sharedGoals.push(newShare);
+    
+    return sharedGoals;
+}
