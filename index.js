@@ -26,12 +26,12 @@ apiRouter.post(`/goals`, (req, res) => {
 });
 
 //Get Goals Shared by You
-app.get(`/sharing`, (req, res) => {
+apiRouter.get(`/sharing`, (req, res) => {
     res.send(sharedGoals);
 });
 
 //Get Goals Shared With You By Other People
-app.get(`/shared`, (req, res) => {
+apiRouter.get(`/shared`, (req, res) => {
     res.send(sharedWithMe);
 })
 
