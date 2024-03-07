@@ -1,25 +1,32 @@
 const { response } = require("express");
 
-function onSendInit() {
-    if (localStorage.getItem('goals')) {
-        let allGoals = localStorage.getItem('goals');
-        allGoals = JSON.parse(allGoals);
-        for ([goalType, specificGoals] of Object.entries(allGoals)) {
-            const typeOptionGrpEl = document.getElementById(`${goalType}Goals`);
+async function onSendInit() {
+    let goals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
+    try {
+        const response = await fetch('/api/goals');
+        goals = await response.json();
+    }
+    catch {
+        if (localStorage.getItem('goals')) {
+            let allGoals = localStorage.getItem('goals');
+            allGoals = JSON.parse(allGoals);
+        }
+    }
+    for ([goalType, specificGoals] of Object.entries(allGoals)) {
+        const typeOptionGrpEl = document.getElementById(`${goalType}Goals`);
 
-            if (specificGoals.length > 0) {
-                for (let i = 0; i < specificGoals.length; i++) {
-                    const goalTitle = specificGoals[i].goalTitle;
+        if (specificGoals.length > 0) {
+            for (let i = 0; i < specificGoals.length; i++) {
+                const goalTitle = specificGoals[i].goalTitle;
 
-                    let newOption = document.createElement('option');
-                    newOption.innerHTML = `${goalTitle}`;
+                let newOption = document.createElement('option');
+                newOption.innerHTML = `${goalTitle}`;
 
-                    typeOptionGrpEl.appendChild(newOption);
-                }
+                typeOptionGrpEl.appendChild(newOption);
             }
-            else {
-                typeOptionGrpEl.remove()
-            }
+        }
+        else {
+            typeOptionGrpEl.remove()
         }
     }
 }
@@ -31,12 +38,12 @@ async function shareGoal() {
     const newShare = {"goalTitle": goalTitleEl.value, "users": usersEl.value}
 
     try {
-        const sharedGoals = fetch(`/share`, {
+        const response = fetch(`/api/share`, {
             method: 'Post',
             headers: {'content-type': 'application.json'},
             body: JSON.stringify(newShare),
         })
-        sharedGoals = await response.json()
+        const sharedGoals = await response.json()
         localStorage.setItem('sharedGoals', JSON.stringify(sharedGoals));
     }
     catch {
