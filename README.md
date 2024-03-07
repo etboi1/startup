@@ -70,7 +70,12 @@ For this deliverable I implemented my JavaScript so that the logic for all inter
         - click add goal and enter the necessary info to create a goal
         - click share goal on the "shared" page to share a new goal
 
-<!-- ## Service Deliverable
-## DB/Login Deliverable
+## Service Deliverable
+- **Node.js/Express HTTP service**
+- **Static middleware for frontend**
+- **Calls to third party endpoints**
+- **Backend service endpoints**
+- **Frontend calls service endpoints**
+<!-- ## DB/Login Deliverable
 ## WebSocket Deliverable
 ## React Deliverable -->
