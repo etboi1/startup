@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 function onSendInit() {
     if (localStorage.getItem('goals')) {
         let allGoals = localStorage.getItem('goals');
@@ -22,29 +24,39 @@ function onSendInit() {
     }
 }
 
-function shareGoal() {
+async function shareGoal() {
+    const goalTitleEl = document.getElementById("goalname");
+    const usersEl = document.getElementById("users");
+
+    const newShare = {"goalTitle": goalTitleEl.value, "users": usersEl.value}
+
+    try {
+        const sharedGoals = fetch(`/share`, {
+            method: 'Post',
+            headers: {'content-type': 'application.json'},
+            body: JSON.stringify(newShare),
+        })
+        sharedGoals = await response.json()
+        localStorage.setItem('sharedGoals', JSON.stringify(sharedGoals));
+    }
+    catch {
+        const sharedGoals = this.updateSharedGoals(newShare);
+        localStorage.setItem('sharedGoals', JSON.stringify(sharedGoals));
+    }
+   
+    window.location.href = "sharegoals.html";
+}
+
+function updateSharedGoals(newShare) {
     let sharedGoals = [];
     const sharedGoalsText = localStorage.getItem('sharedGoals');
     if (sharedGoalsText) {
         sharedGoals = JSON.parse(sharedGoalsText);
     }
 
-    const goalTitleEl = document.getElementById("goalname");
-    const usersEl = document.getElementById("users");
+    sharedGoals.push(newShare);
 
-    sharedGoals = this.updateSharedGoals(goalTitleEl, usersEl, sharedGoals);
-
-    localStorage.setItem('sharedGoals', JSON.stringify(sharedGoals));
-   
-    window.location.href = "sharegoals.html";
-}
-
-function updateSharedGoals(goalTitle, users, existingSharedGoals) {
-    const newShare = {"goalTitle": goalTitle.value, "users": users.value}
-
-    existingSharedGoals.push(newShare);
-
-    return existingSharedGoals;
+    return sharedGoals;
 }
 
 onSendInit()
