@@ -107,3 +107,22 @@ function updateNotification() {
 }
 
 setInterval(function() {updateNotification()}, 15000)
+
+async function thirdPartyCall() {
+    response = await fetch("https://type.fit/api/quotes");
+    quotes = await response.json();
+    //get quote
+    let index = Math.floor(Math.random() * quotes.length);
+    quoteAndAuthor = quotes.at(index);
+    return quoteAndAuthor;
+}
+
+//To demonstrate that this works, a different quote will be requested on init every time, later I will change it to only request a new quote once a day
+async function inspirationOnInit() {
+    quoteAuthor = await thirdPartyCall();
+    author = quoteAuthor.author.split(',')[0];
+    quoteEl = document.getElementById('inspirationalQuote');
+    quoteEl.textContent = `${quoteAuthor.text} - ${author}`;
+}
+
+inspirationOnInit();
