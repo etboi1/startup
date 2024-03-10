@@ -72,8 +72,8 @@ For this deliverable I implemented my JavaScript so that the logic for all inter
 
 ## Service Deliverable
 - **Node.js/Express HTTP service** - it has been done my lord
-- **Static middleware for frontend**
-- **Calls to third party endpoints**
+- **Static middleware for frontend** - used express middleware to serve up frontend
+- **Calls to third party endpoints** - called a third party endpoint for serving up an inspirational quote on the main goal page
 - **Backend service endpoints** - endpoints for storing and retrieving personal and shared goals
 - **Frontend calls service endpoints** - I did this using fetch
 <!-- ## DB/Login Deliverable
