@@ -14,6 +14,24 @@ app.use(express.static('public'));
 let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
+//Get usernames
+apiRouter.get(`/user`, (req, res) => {
+    let currentUser = '';
+    for (let i = 0; i < users.length; i++) {
+        if (req.body === users.at(i)) {
+            currentUser = users.at(i);
+        }
+    }
+    res.send(currentUser);
+})
+
+//save usernames
+apiRouter.post(`/user`, (req, res) => {
+    users = addUser(req.body);
+    currentUser = req.body;
+    
+})
+
 //Get Goals
 apiRouter.get(`/goals`, (req, res) => {
     res.send(goals);
@@ -49,6 +67,13 @@ app.use((req, res) => {
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 });
+
+//Function for adding the current user to the list of users
+let users = []
+function addUser(currentUser) {
+    users.push(currentUser);
+    return users;
+}
 
 //Function for adding a new goal
 let goals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
