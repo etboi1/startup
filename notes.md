@@ -464,4 +464,3 @@ Endpoint Design
 ### CORS
 - Single Origin Principle (SOP)
 - CORS
-    - 
