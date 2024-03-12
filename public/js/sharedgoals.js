@@ -1,12 +1,20 @@
-function onShareInit() {
-    let username = localStorage.getItem('username');
+async function onShareInit() {
+    let currentUser = ''
+    try {
+        const response = await fetch(`/api/user`);
+        const username = await response.text();
+        currentUser = username;
+    }
+    catch {
+        currentUser = localStorage.getItem('currentUser');
+    }
     const usernameEl = document.querySelector('h8');
-    usernameEl.textContent = `Welcome ${username}!`;
+    usernameEl.textContent = `Welcome ${currentUser}!`;
 
     let sharedGoals = [];
     try {
-        const response = fetch('/api/shared');
-        sharedGoals = response.json()
+        const response = await fetch('/api/sharing');
+        sharedGoals = await response.json()
     }
     catch {
         sharedGoals = localStorage.getItem('sharedGoals');
@@ -34,9 +42,16 @@ function onShareInit() {
     }
 }
 
-function onSharedInit() {
-    let sharedWithMe = {'goalreacher': [{'goalTitle': 'Lose 10 Pounds', 'status': 'On Track', 'targetCompletionDate': '2024-03-02'}, {'goalTitle': 'Get an A in Math', 'status': 'Hit Milestone', 'targetCompletionDate': '2024-05-10'}], 
-    'jmbohee29': [{'goalTitle': 'Run a 5 Minute Mile', 'status': 'Behind', 'targetCompletionDate': '2024-06-30'}]}
+async function onSharedInit() {
+    let sharedWithMe = {};
+    try {
+        const response = await fetch(`/api/shared`);
+        sharedWithMe = await response.json()
+    }
+    catch {
+        sharedWithMe = {'goalreacher': [{'goalTitle': 'Lose 10 Pounds', 'status': 'On Track', 'targetCompletionDate': '2024-03-02'}, {'goalTitle': 'Get an A in Math', 'status': 'Hit Milestone', 'targetCompletionDate': '2024-05-10'}], 
+        'jmbohee29': [{'goalTitle': 'Run a 5 Minute Mile', 'status': 'Behind', 'targetCompletionDate': '2024-06-30'}]}
+    }
     for ([user, sharedGoals] of Object.entries(sharedWithMe)) {
         const correctAccordion = document.getElementById('sharedWithMe');
         const innerContainerEl = document.createElement('div')
@@ -48,11 +63,12 @@ function onSharedInit() {
 
         for (let i = 0; i < sharedGoals.length; i++) {
             const goalTitle = sharedGoals[i].goalTitle;
-            const progressStatus = sharedGoals[i].status;
+            // const progressStatus = sharedGoals[i].status;
             const dueDate = sharedGoals[i].targetCompletionDate;
             
             const goalInfoEl = document.createElement('span');
-            goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate}) - ${progressStatus}`;
+            // goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate}) - ${progressStatus}`;
+            goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate})`;
 
             innerContainerEl.appendChild(goalInfoEl);
         }

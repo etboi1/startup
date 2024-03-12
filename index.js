@@ -40,6 +40,7 @@ apiRouter.post(`/goals`, (req, res) => {
 
 //Get Goals Shared With You By Other People
 apiRouter.get(`/shared`, (req, res) => {
+    const sharedWithMe = allGoals[currentUser].sharedGoals;
     res.send(sharedWithMe);
 })
 
@@ -75,7 +76,7 @@ function addUser(username, password, userPassList, allUserGoals) {
     }
     currentUser = username;
     if (!(currentUser in allGoals)) {
-        allUserGoals[currentUser] = {'personalGoals': {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]}, 'sharedGoals': []}
+        allUserGoals[currentUser] = {'personalGoals': {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]}, 'sharedGoals': {}}
     }
     return userPassList;
 }
@@ -100,10 +101,13 @@ function updateSharedGoals(newShare, goalsCurrentlySharing) {
     userShareList = newShare.users.split(',');
     for (let i = 0; i < userShareList.length; i++) {
         let user = userShareList.at(i)
-        if (user in allGoals) {
+        if (allGoals[user]) {
+            if (!(allGoals[user].sharedGoals[currentUser])) {
+                allGoals[user].sharedGoals[currentUser] = [];
+            }
             for (let i = 0; i < allGoals[currentUser].personalGoals[goalType].length; i++) {
                 if (allGoals[currentUser].personalGoals[goalType].at(i).goalTitle === goalTitle) {
-                    allGoals[user].sharedGoals.push(allGoals[currentUser].personalGoals[goalType][i]);
+                    allGoals[user].sharedGoals[currentUser].push(allGoals[currentUser].personalGoals[goalType][i]);
                 }
             }
         }

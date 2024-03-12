@@ -1,14 +1,12 @@
-const { response } = require("express");
-
 async function onSendInit() {
-    let goals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
+    let allGoals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
     try {
         const response = await fetch('/api/goals');
-        goals = await response.json();
+        allGoals = await response.json();
     }
     catch {
         if (localStorage.getItem('goals')) {
-            let allGoals = localStorage.getItem('goals');
+            allGoals = localStorage.getItem('goals');
             allGoals = JSON.parse(allGoals);
         }
     }
@@ -32,14 +30,17 @@ async function onSendInit() {
 }
 
 async function shareGoal() {
+    const goalTypeEl = document.querySelector('#goalname option:checked').parentElement.label;
     const goalTitleEl = document.getElementById("goalname");
     const usersEl = document.getElementById("users");
 
-    const newShare = {"goalTitle": goalTitleEl.value, "users": usersEl.value}
+    let goalType = goalTypeEl.split(' ').at(0)
+
+    const newShare = {"goalType": goalType, "goalTitle": goalTitleEl.value, "users": usersEl.value}
 
     try {
-        const response = fetch(`/api/share`, {
-            method: 'Post',
+        const response = await fetch(`/api/share`, {
+            method: 'POST',
             headers: {'content-type': 'application.json'},
             body: JSON.stringify(newShare),
         })
