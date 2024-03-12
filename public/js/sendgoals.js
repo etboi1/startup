@@ -41,7 +41,7 @@ async function shareGoal() {
     try {
         const response = await fetch(`/api/share`, {
             method: 'POST',
-            headers: {'content-type': 'application.json'},
+            headers: {'content-type': 'application/json'},
             body: JSON.stringify(newShare),
         })
         const sharedGoals = await response.json()
