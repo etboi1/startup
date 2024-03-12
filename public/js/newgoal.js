@@ -17,7 +17,7 @@ async function saveGoal() {
             method: 'POST',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(newGoalData),
-        })
+        });
 
         const goals = await response.json();
         localStorage.setItem('goals', JSON.stringify(goals));
