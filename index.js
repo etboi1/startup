@@ -29,24 +29,24 @@ apiRouter.post(`/user`, (req, res) => {
 
 //Get Goals
 apiRouter.get(`/goals`, (req, res) => {
-    res.send(personalGoals);
+    res.send(allGoals[currentUser].personalGoals);
 });
 
 //Submit New Goals
 apiRouter.post(`/goals`, (req, res) => {
-    personalGoals = updateGoals(req.body, personalGoals);
+    personalGoals = updateGoals(req.body);
     res.send(personalGoals);
-});
-
-//Get Goals Shared by You
-apiRouter.get(`/sharing`, (req, res) => {
-    res.send(sharedGoals);
 });
 
 //Get Goals Shared With You By Other People
 apiRouter.get(`/shared`, (req, res) => {
     res.send(sharedWithMe);
 })
+
+//Get Goals Shared by You
+apiRouter.get(`/sharing`, (req, res) => {
+    res.send(sharedGoals);
+});
 
 //Share New Goal
 apiRouter.post(`/share`, (req, res) => {
@@ -75,31 +75,25 @@ function addUser(username, password, userPassList, allUserGoals) {
     }
     currentUser = username;
     if (!(currentUser in allGoals)) {
-        allUserGoals[currentUser] = []
+        allUserGoals[currentUser] = {'personalGoals': {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]}, 'sharedGoals': []}
     }
     return userPassList;
 }
 
 //Function for adding a new goal
-let personalGoals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
-function updateGoals(goals, newData) {
-    //check if personal goals exists for that user. If so, set goals equal to its value
-    if (allGoals[currentUser].personalGoals) {
-        goals = allGoals[currentUser].personalGoals;
-    }
+function updateGoals(newData) {
+    goals = allGoals[currentUser].personalGoals
     //add the new goal
     goalType = newData.at(0);
     newGoal = newData.at(1);
     goals[goalType].push(newGoal);
-    //Set the value of that user's personal goals to the newly updated list of goals
-    allGoals[currentUser].personalGoals = goals;
     //return the newly updated personal goals object
     return goals;
 }
 
 //Function for adding sharing a new goal
-let sharedGoals = [];
-function updateSharedGoals(newShare, sharedGoals) {
+let sharedGoals = []
+function updateSharedGoals(newShare, goalsCurrentlySharing) {
     sharedGoals.push(newShare);
     
     return sharedGoals;

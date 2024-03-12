@@ -8,7 +8,7 @@ async function onInit() {
         currentUser = localStorage.getItem('username');
     }
     const usernameEl = document.querySelector('h8');
-    usernameEl.textContent = `Welcome ${username}!`;
+    usernameEl.textContent = `Welcome ${currentUser}!`;
 
     let allGoals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
 
