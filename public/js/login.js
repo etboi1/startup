@@ -5,11 +5,13 @@ async function login() {
     try {
         const response = await fetch(`/api/user`, {
             method: 'POST',
-            headers: {'content-type': 'array'},
-            body: [usernameEl.value, passwordEl.value]
+            headers: {'content-type': 'application/json'},
+            body: JSON.stringify([usernameEl.value, passwordEl.value]),
         });
-        localStorage.setItem('currentUser', response);
-        localStorage.setItem('password', passwordEl);
+        let usernameObject = await response.json();
+        let username = usernameObject.currentUser;
+        localStorage.setItem('currentUser', username);
+        localStorage.setItem('password', passwordEl.value);
     }
     catch {
         localStorage.setItem('currentUser', usernameEl.value);

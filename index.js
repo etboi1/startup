@@ -24,7 +24,7 @@ apiRouter.post(`/user`, (req, res) => {
     currentUser = req.body.at(0);
     currentPassword = req.body.at(1);
     allUsers = addUser(currentUser, currentPassword, loginInfo, allGoals);
-    res.send(currentUser);
+    res.send({'currentUser': `${currentUser}`});
 })
 
 //Get Goals
@@ -70,7 +70,7 @@ let allGoals = {};
 let loginInfo = {}
 let currentUser = '';
 function addUser(username, password, userPassList, allUserGoals) {
-    if (!(username in loginInfo)) {
+    if (!(username in userPassList)) {
         userPassList[username] = password;
     }
     currentUser = username;
@@ -94,7 +94,7 @@ function updateGoals(newData) {
 //Function for adding sharing a new goal
 let sharedGoals = []
 function updateSharedGoals(newShare, goalsCurrentlySharing) {
-    sharedGoals.push(newShare);
+    goalsCurrentlySharing.push(newShare);
     
-    return sharedGoals;
+    return goalsCurrentlySharing;
 }
