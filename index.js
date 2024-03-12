@@ -14,33 +14,28 @@ app.use(express.static('public'));
 let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
 
-//Get usernames
+//Get currentUser
 apiRouter.get(`/user`, (req, res) => {
-    let currentUser = '';
-    for (let i = 0; i < users.length; i++) {
-        if (req.body === users.at(i)) {
-            currentUser = users.at(i);
-        }
-    }
     res.send(currentUser);
 })
 
 //save usernames
 apiRouter.post(`/user`, (req, res) => {
-    users = addUser(req.body);
-    currentUser = req.body;
-    
+    currentUser = req.body.at(0);
+    currentPassword = req.body.at(1);
+    allUsers = addUser(currentUser, currentPassword, loginInfo, allGoals);
+    res.send(currentUser);
 })
 
 //Get Goals
 apiRouter.get(`/goals`, (req, res) => {
-    res.send(goals);
+    res.send(personalGoals);
 });
 
 //Submit New Goals
 apiRouter.post(`/goals`, (req, res) => {
-    goals = updateGoals(req.body, goals);
-    res.send(goals);
+    personalGoals = updateGoals(req.body, personalGoals);
+    res.send(personalGoals);
 });
 
 //Get Goals Shared by You
@@ -68,19 +63,37 @@ app.listen(port, () => {
     console.log(`Listening on port ${port}`)
 });
 
+//The Goals of all the Users
+let allGoals = {};
+
 //Function for adding the current user to the list of users
-let users = []
-function addUser(currentUser) {
-    users.push(currentUser);
-    return users;
+let loginInfo = {}
+let currentUser = '';
+function addUser(username, password, userPassList, allUserGoals) {
+    if (!(username in loginInfo)) {
+        userPassList[username] = password;
+    }
+    currentUser = username;
+    if (!(currentUser in allGoals)) {
+        allUserGoals[currentUser] = []
+    }
+    return userPassList;
 }
 
 //Function for adding a new goal
-let goals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
+let personalGoals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
 function updateGoals(goals, newData) {
+    //check if personal goals exists for that user. If so, set goals equal to its value
+    if (allGoals[currentUser].personalGoals) {
+        goals = allGoals[currentUser].personalGoals;
+    }
+    //add the new goal
     goalType = newData.at(0);
+    newGoal = newData.at(1);
     goals[goalType].push(newGoal);
-
+    //Set the value of that user's personal goals to the newly updated list of goals
+    allGoals[currentUser].personalGoals = goals;
+    //return the newly updated personal goals object
     return goals;
 }
 

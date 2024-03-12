@@ -5,15 +5,15 @@ async function login() {
     try {
         const response = await fetch(`/api/user`, {
             method: 'POST',
-            headers: {'content-type': 'string'},
-            body: usernameEl.value,
+            headers: {'content-type': 'array'},
+            body: [usernameEl.value, passwordEl.value]
         });
+        localStorage.setItem('currentUser', response);
+        localStorage.setItem('password', passwordEl);
     }
     catch {
-        
+        localStorage.setItem('currentUser', usernameEl.value);
+        localStorage.setItem('password', passwordEl.value)
     }
-
-    localStorage.setItem("username", usernameEl.value);
-    localStorage.setItem("password", passwordEl.value);
     window.location.href = "goals.html";
 }

@@ -1,5 +1,12 @@
 async function onInit() {
-    let username = localStorage.getItem('username');
+    let currentUser = ''
+    try {
+        const username = await fetch(`/api/user`);
+        currentUser = username;
+    }
+    catch {
+        currentUser = localStorage.getItem('username');
+    }
     const usernameEl = document.querySelector('h8');
     usernameEl.textContent = `Welcome ${username}!`;
 
