@@ -94,6 +94,20 @@ function updateGoals(newData) {
 //Function for adding sharing a new goal
 let sharedGoals = []
 function updateSharedGoals(newShare, goalsCurrentlySharing) {
+    let goalType = newShare.goalType;
+    let goalTitle = newShare.goalTitle;
+
+    userShareList = newShare.users.split(',');
+    for (let i = 0; i < userShareList.length; i++) {
+        let user = userShareList.at(i)
+        if (user in allGoals) {
+            for (let i = 0; i < allGoals[currentUser].personalGoals[goalType].length; i++) {
+                if (allGoals[currentUser].personalGoals[goalType].at(i).goalTitle === goalTitle) {
+                    allGoals[user].sharedGoals.push(allGoals[currentUser].personalGoals[goalType][i]);
+                }
+            }
+        }
+    }
     goalsCurrentlySharing.push(newShare);
     
     return goalsCurrentlySharing;
