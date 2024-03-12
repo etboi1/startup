@@ -38,6 +38,13 @@ apiRouter.post(`/goals`, (req, res) => {
     res.send(personalGoals);
 });
 
+//Report progress on a goal
+apiRouter.post(`/progress`, (req, res) => {
+    update = req.body;
+    updatedGoals = reportProgress(update);
+    res.send(updatedGoals);
+})
+
 //Get Goals Shared With You By Other People
 apiRouter.get(`/shared`, (req, res) => {
     const sharedWithMe = allGoals[currentUser].sharedGoals;
@@ -90,6 +97,23 @@ function updateGoals(newData) {
     goals[goalType].push(newGoal);
     //return the newly updated personal goals object
     return goals;
+}
+
+//Function for reporting progress
+function reportProgress(updateData) {
+    const progressingType = updateData.progressingType;
+    const progressingTitle = updateData.progressingTitle;
+    const status = updateData.status;
+    for ([goalType, goals] of Object.entries(allGoals[currentUser].personalGoals)) {
+        if (goalType === progressingType) {
+            for (let i =0; i < goals.length; i++) {
+                if (goals[i].goalTitle === progressingTitle) {
+                    goals[i].status = status;
+                    return allGoals;
+                }
+            }
+        }
+    } 
 }
 
 //Function for adding sharing a new goal
