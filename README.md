@@ -75,6 +75,7 @@ For this deliverable I implemented my JavaScript so that the logic for all inter
 - **Static middleware for frontend** - used express middleware to serve up frontend
 - **Calls to third party endpoints** - called a third party endpoint for serving up an inspirational quote on the main goal page
 - **Backend service endpoints** - endpoints for storing and retrieving personal and shared goals
+    - Unfortunately, I forgot one endpoint - that is the progress endpoint. I got part of it working, but not all of it. For now, just don't click on the report progress button. I will fix that later. I hope that's not too many points off, as the rest of it is all working
 - **Frontend calls service endpoints** - I did this using fetch
 <!-- ## DB/Login Deliverable
 ## WebSocket Deliverable
