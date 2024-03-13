@@ -476,4 +476,5 @@ Endpoint Design
         - Which IP addresses you want to allow to hit your database
         - For our purposes, allow all IP addresses
     - Use npm to install mongo, which is a node package for communicating with MongoDB
-    - Before writing any data, you should check to see if the connection with the database was successful or not
+        - To find the username, password and hostname to connect to the database, go to the database button, then click on connect (on the MongoDB website)
+        - Before writing any data, you should check to see if the connection with the database was successful or not
