@@ -464,3 +464,16 @@ Endpoint Design
 ### CORS
 - Single Origin Principle (SOP)
 - CORS
+
+### Data Services
+- Popular Data Services:
+    - MongoDB - JSON objects
+    - DynamoDB - key value pair
+    - Neo4J - graph based data
+    - InfluxDB - time series data
+- MongoDB:
+    - Network Access:
+        - Which IP addresses you want to allow to hit your database
+        - For our purposes, allow all IP addresses
+    - Use npm to install mongo, which is a node package for communicating with MongoDB
+    - Before writing any data, you should check to see if the connection with the database was successful or not
