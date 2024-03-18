@@ -478,3 +478,20 @@ Endpoint Design
     - Use npm to install mongo, which is a node package for communicating with MongoDB
         - To find the username, password and hostname to connect to the database, go to the database button, then click on connect (on the MongoDB website)
         - Before writing any data, you should check to see if the connection with the database was successful or not
+
+### Authorization Services, Simon Login
+- Storing passwords:
+    - passwords are hashed, meaning they're encrypted or changed to a different string of characters
+        - good hashes only go one way; passwords will be hashed and then they can't be hashed back
+    - to authenticate the password, hash the password when entered in and compare the hashed value to the stored hashed password
+- Bcrypt:
+    - does the hashing and comparing for us (it's an npm package)
+    - you want the hash to take a second so it takes too long for someone to make a hash attack table
+- Authentication Tokens:
+    - Common practice is to authenticate once upon login, and then an "authentication token" is passed to the front end. Each time authentication is needed, the front end just passes the token back to the backend
+    - Creating tokens:
+        - a common practice is to use a randomly generated string
+            - an example would be the npm package 'uuid'
+            - call the function 'uuid.v4()'
+- Cookies:
+    - 
