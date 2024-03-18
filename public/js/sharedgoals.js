@@ -63,12 +63,12 @@ async function onSharedInit() {
 
         for (let i = 0; i < sharedGoals.length; i++) {
             const goalTitle = sharedGoals[i].goalTitle;
-            // const progressStatus = sharedGoals[i].status;
+            const progressStatus = sharedGoals[i].status;
             const dueDate = sharedGoals[i].targetCompletionDate;
             
             const goalInfoEl = document.createElement('span');
-            // goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate}) - ${progressStatus}`;
-            goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate})`;
+            goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate}) - ${progressStatus}`;
+            // goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate})`;
 
             innerContainerEl.appendChild(goalInfoEl);
         }

@@ -65,7 +65,7 @@ async function onInit() {
     }
 }
 
-function sendToProgress() {
+async function sendToProgress() {
     const buttonDiv = this;
     const innerContainer = buttonDiv.parentElement;
     const outerContainer = innerContainer.parentElement;
@@ -74,8 +74,17 @@ function sendToProgress() {
     const strong = innerContainer.children[0];
     const goalTitle = strong.textContent;
 
-    allGoals = localStorage.getItem('goals');
-    allGoals = JSON.parse(allGoals);
+    try {
+        const response = await fetch('/api/goals');
+        allGoals = await response.json();
+    }
+    catch {
+        if (localStorage.getItem('goals')) {
+            allGoals = localStorage.getItem('goals');
+            allGoals = JSON.parse(allGoals);
+        }
+    }
+    
     for ([type, goals] of Object.entries(allGoals)) {
         if (type === goalType) {
             for (let i = 0; i < goals.length; i++) {
