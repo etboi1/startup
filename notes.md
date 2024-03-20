@@ -493,5 +493,6 @@ Endpoint Design
         - a common practice is to use a randomly generated string
             - an example would be the npm package 'uuid'
             - call the function 'uuid.v4()'
-- Cookies:
-    - 
+
+### UI & Endpoint Testing
+- 

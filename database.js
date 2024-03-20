@@ -3,7 +3,7 @@ const config = require('./dbConfig.json');
 
 async function main() {
   // Connect to the database cluster
-  const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
+  const url = `mongodb+srv://${config.username}:${config.password}@${config.hostname}`;
   const client = new MongoClient(url);
   const db = client.db('rental');
   const collection = db.collection('house');
