@@ -27,7 +27,16 @@ app.use(`/api`, apiRouter);
 
 //Create Auth token for a new user
 apiRouter.post('/auth/create', async (req, res) => {
-    
+    //Check to see if the username already exists
+    if (await DB.getUser(req.body.username)) {
+        res.status(409).send({msg: 'Existing user'});
+    }
+    else {
+        const user = await DB.createUser(req.body.email, req.body.password);
+    }
+
+    //Set the cookie
+    setAuthCookie(res, user.token);
 })
 
 //Get currentUser
@@ -83,9 +92,14 @@ app.use((req, res) => {
     res.sendFile('index.html', {root: 'public'});
 })
 
-app.listen(port, () => {
-    console.log(`Listening on port ${port}`)
-});
+//Function for setting an authorization cookie in the http response
+function setAuthCookie(res, authToken) {
+    res.cookie(authCookieName, authToken, {
+        secure: true,
+        httpOnly: true,
+        sameSite: 'strict',
+    });
+}
 
 //The Goals of all the Users
 let allGoals = {};
@@ -156,3 +170,7 @@ function updateSharedGoals(newShare, goalsCurrentlySharing) {
     
     return goalsCurrentlySharing;
 }
+
+app.listen(port, () => {
+    console.log(`Listening on port ${port}`)
+});
