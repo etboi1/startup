@@ -96,6 +96,11 @@ footer {
     }
 }
 
+.button-container {
+    display: flex;
+    flex-direction: row;
+}
+
 .login-button {
     background-color: navy;
     border: solid white 1px;
@@ -107,6 +112,7 @@ footer {
     font-size: 16px;
     border-radius: 8px;
     transition-duration: .5s;
+    flex: 1;
 }
 
 input {

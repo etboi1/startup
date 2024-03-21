@@ -12,13 +12,17 @@
     </header>
 
     <main>
-        <img class="dwayne" src="https://m.media-amazon.com/images/I/51UaQQbtyoL._AC_UF894,1000_QL80_.jpg" alt="Dwayne 'The Rock' Johnson Inspirational Quote">
+        <img class="dwayne" src="https://m.media-amazon.com/images/I/51UaQQbtyoL._AC_UF894,1000_QL80_.jpg" alt='Dwayne "The Rock" Johnson Inspirational Quote'>
         <!-- This is the login area -->
         <div class="form">
-            <label for="login"><h2>Login to Continue:</h2></label>
-            <input id="username" placeholder="Username..."" type="text">
+            <label for="login"><h2>Login or Create Account:</h2></label>
+            <input id="username" placeholder="Username..." type="text">
             <input id="password" placeholder="Password..." type="password">
-            <button onclick="login()" class="login-button" type="submit">Login</button>
+            <label for="login-button">Enter credentials first</label>
+            <div class="button-container">
+                <button onclick="loginUser()" class="login-button" type="submit">Login</button>
+                <button onclick="createUser()" class="login-button" type="submit">Create Account</button>
+            </div>
         </div>
     </main>
 
