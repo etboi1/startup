@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const DB = require('./database.js');
 
+//Call the cookie made "token" because we're using it as an authentication token
 const authCookieName = 'token';
 
 //sets default service port to 3000 unless another one is provided
@@ -33,10 +34,14 @@ apiRouter.post('/auth/create', async (req, res) => {
     }
     else {
         const user = await DB.createUser(req.body.email, req.body.password);
-    }
 
-    //Set the cookie
-    setAuthCookie(res, user.token);
+        //Set the cookie
+        setAuthCookie(res, user.token);
+
+        res.send({
+            id: user._id,
+        })
+    }
 })
 
 //Get currentUser
