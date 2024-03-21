@@ -38,9 +38,26 @@ apiRouter.post('/auth/create', async (req, res) => {
         //Set the cookie
         setAuthCookie(res, user.token);
 
-        res.send(user.username);
+        res.send();
     }
 });
+
+//Get autherization token for an existing user
+apiRouter.post('/api/login', async (req, res) => {
+    const user = await DB.getUser(req.body.username);
+    if (user) {
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            setAuthCookie(res, user.token);
+            res.send();
+            return;
+        }
+        //if the compare fails, the password was wrong
+        res.status(401).send({ msg: 'Password incorrect'});
+        return;
+    }
+    //if the user doesn't exist, notify the client
+    res.status(401).send({ msg: 'User does not exist' });
+})
 
 //Get currentUser
 apiRouter.get(`/user`, (req, res) => {
