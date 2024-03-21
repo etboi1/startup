@@ -495,4 +495,7 @@ Endpoint Design
             - call the function 'uuid.v4()'
 
 ### UI & Endpoint Testing
-- 
+- Endpoint Testing:
+    - Jest
+        - Automatically imported into the files that use it
+        - Install supertest with it (this will start up the server for Jest to test it)
