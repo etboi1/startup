@@ -1,5 +1,10 @@
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcyrpt');
 const express = require('express');
 const app = express();
+const DB = require('./database.js');
+
+const authCookieName = 'token';
 
 //sets default service port to 3000 unless another one is provided
 const port = process.argv.length > 2 ? process.argv[2] : 3000;
@@ -7,12 +12,23 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 //include the JSON body parsing middleware - goal data is passed in using JSON
 app.use(express.json());
 
+//like simon, use cookie parser middleware for tracking authentication tokens
+app.use(cookieParser);
+
+//Trust ip addresses from proxy - this way we can use ip addresses without req.ip
+app.set('trust proxy', true);
+
 //just like simon, serve up front-end static content from public directory
 app.use(express.static('public'));
 
 //I'm gonna use apiRouter for service endpoints, just like simon
 let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
+
+//Create Auth token for a new user
+apiRouter.post('/auth/create', async (req, res) => {
+    
+})
 
 //Get currentUser
 apiRouter.get(`/user`, (req, res) => {
