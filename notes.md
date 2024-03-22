@@ -499,3 +499,8 @@ Endpoint Design
     - Jest
         - Automatically imported into the files that use it
         - Install supertest with it (this will start up the server for Jest to test it)
+
+### WebSocket
+- Proxy messages between clients
+- Sending notifications to client
+- I was not having it today
