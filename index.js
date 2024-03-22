@@ -14,13 +14,13 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 app.use(express.json());
 
 //like simon, use cookie parser middleware for tracking authentication tokens
-app.use(cookieParser);
-
-//Trust ip addresses from proxy - this way we can use ip addresses without req.ip
-app.set('trust proxy', true);
+app.use(cookieParser());
 
 //just like simon, serve up front-end static content from public directory
 app.use(express.static('public'));
+
+//Trust ip addresses from proxy - this way we can use ip addresses without req.ip
+app.set('trust proxy', true);
 
 //I'm gonna use apiRouter for service endpoints, just like simon
 let apiRouter = express.Router();
@@ -43,7 +43,7 @@ apiRouter.post('/auth/create', async (req, res) => {
 });
 
 //Get autherization token for an existing user
-apiRouter.post('/api/login', async (req, res) => {
+apiRouter.post('/auth/login', async (req, res) => {
     const user = await DB.getUser(req.body.username);
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
@@ -52,11 +52,11 @@ apiRouter.post('/api/login', async (req, res) => {
             return;
         }
         //if the compare fails, the password was wrong
-        res.status(401).send({ msg: 'Password incorrect'});
+        res.status(401).send({ msg: 'Incorrect password'});
         return;
     }
     //if the user doesn't exist, notify the client
-    res.status(401).send({ msg: 'User does not exist' });
+    res.status(401).send({ msg: 'User does not exist. Did you mean to create a new account?' });
 })
 
 //Delete Autherization token if stored in cookie

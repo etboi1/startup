@@ -38,3 +38,7 @@ async function createUser(username, password) {
 }
 
 //Don't forget to add the thing to export stuff from this file to other files that need to use it
+module.exports = {
+  getUser,
+  createUser,
+}

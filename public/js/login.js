@@ -1,5 +1,5 @@
 async function loginUser() {
-    loginOrCreate('/api/auth/create');
+    loginOrCreate('/api/auth/login');
 }
 
 async function createUser() {
@@ -24,7 +24,7 @@ async function loginOrCreate(endpoint) {
     else {
         const body = await response.json();
         const errorEl = document.getElementById('error');
-        errorEl.textContent = `&#9888; Error: ${body.msg}`;
+        errorEl.textContent = String.fromCharCode(0x26A0) + `Error: ${body.msg}`;
     }
 }
 
