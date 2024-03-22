@@ -59,6 +59,12 @@ apiRouter.post('/api/login', async (req, res) => {
     res.status(401).send({ msg: 'User does not exist' });
 })
 
+//Delete Autherization token if stored in cookie
+apiRouter.delete('/auth/logout', (req, res) => {
+    res.clearCookie(authCookieName);
+    res.status(204).end();
+})
+
 //Get currentUser
 apiRouter.get(`/user`, (req, res) => {
     res.send(currentUser);
