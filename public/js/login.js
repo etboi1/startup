@@ -17,10 +17,14 @@ async function loginOrCreate(endpoint) {
 
     if (response.ok) {
         localStorage.setItem('username', username);
+        const errorEl = document.getElementById('error');
+        errorEl.textContent = '';
         window.location.href = 'goals.html';
     }
     else {
         const body = await response.json();
+        const errorEl = document.getElementById('error');
+        errorEl.textContent = `&#9888; Error: ${body.msg}`;
     }
 }
 

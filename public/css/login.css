@@ -130,6 +130,10 @@ input {
     border: navy;
 }
 
+.error-msg {
+    color: rgb(255, 153, 0);
+}
+
 @media (max-height: 100%) {
     header {
       display: flex;
