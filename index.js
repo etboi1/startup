@@ -38,7 +38,7 @@ apiRouter.post('/auth/create', async (req, res) => {
         //Set the cookie
         setAuthCookie(res, user.token);
 
-        res.send();
+        res.status(204).end();
     }
 });
 
@@ -48,7 +48,7 @@ apiRouter.post('/api/login', async (req, res) => {
     if (user) {
         if (await bcrypt.compare(req.body.password, user.password)) {
             setAuthCookie(res, user.token);
-            res.send();
+            res.status(204).end();
             return;
         }
         //if the compare fails, the password was wrong
