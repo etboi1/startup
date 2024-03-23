@@ -77,16 +77,12 @@ async function sendToProgress() {
         }
     }
     
-    for ([type, goals] of Object.entries(allGoals)) {
-        if (type === goalType) {
-            for (let i = 0; i < goals.length; i++) {
-                if (goals[i].goalTitle === goalTitle) {
-                    localStorage.setItem('progressingType', goalType);
-                    localStorage.setItem('progressingTitle', goalTitle);
-                    localStorage.setItem('milestoneTitle', goals[i].milestoneTitle);
-                    localStorage.setItem('milestoneDate', goals[i].milestoneDate);
-                }
-            }
+    for (let i = 0; i < allGoals.length; i++) {
+        if (allGoals.at(i).goalTitle === goalTitle) {
+            localStorage.setItem('progressingType', goalType);
+            localStorage.setItem('progressingTitle', goalTitle);
+            localStorage.setItem('milestoneTitle', allGoals.at(i).milestoneTitle);
+            localStorage.setItem('milestoneDate', allGoals.at(i).milestoneDate);
         }
     }
     window.location.href = "progress.html";

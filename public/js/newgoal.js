@@ -14,7 +14,9 @@ async function saveGoal() {
         "goalDescription": descriptionEl.value,
         "targetCompletionDate": completionDateEl.value,
         "milestoneDate": milestoneDateEl.value,
-        "milestoneTitle": milestoneTitleEl.value}
+        "milestoneTitle": milestoneTitleEl.value,
+        "status": 'not yet reported'
+    }
 
     try {
         const response = await fetch('/api/goals', {

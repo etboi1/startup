@@ -88,6 +88,18 @@ function getSharedByClient(currentUser) {
   return cursor.toArray();
 }
 
+function updateProgress(user, goalTitle, status) {
+  goalCollection.updateOne(
+    {
+      $and: [
+        {username: user},
+        {goalTitle: goalTitle}
+      ]
+    },
+    { $set: {status: status}}
+  )
+}
+
 //Don't forget to add the thing to export stuff from this file to other files that need to use it
 module.exports = {
   getUser,
@@ -97,5 +109,6 @@ module.exports = {
   addGoal,
   shareGoal,
   getSharedWithClient,
-  getSharedByClient
+  getSharedByClient,
+  updateProgress,
 }

@@ -100,6 +100,15 @@ secureApiRouter.post(`/goals`, async (req, res) => {
 })
 
 //Report progress on a goal
+secureApiRouter.put(`/progress`, async (req, res) => {
+    console.log(req.body);
+    user = req.body.username;
+    progressingTitle = req.body.progressingTitle;
+    updateStatus = req.body.status;
+    await DB.updateProgress(user, progressingTitle, updateStatus);
+    const personalGoals = await DB.getPersonalGoals();
+    res.send(personalGoals);
+})
 // apiRouter.post(`/progress`, (req, res) => {
 //     update = req.body;
 //     updatedGoals = reportProgress(update);
