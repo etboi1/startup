@@ -64,11 +64,28 @@ async function shareGoal(currentUser, goalTitle, users) {
         ]
       }, 
       { $push: {sharedWith : {$each: usersList, $slice: -usersList.length}}}
-    )
+    );
   }
   catch {
     console.error("Error updating goal's share list");
   }
+}
+
+function getSharedWithClient(currentUser) {
+  const cursor = goalCollection.find({ sharingWith: { $in: [currentUser] } });
+  return cursor.toArray();
+}
+
+function getSharedByClient(currentUser) {
+  const cursor = goalCollection.find(
+    {
+      $and: [
+        { username: currentUser},
+        { sharingWith: { $exists: true, $ne: [] }}
+      ]
+    }
+  );
+  return cursor.toArray();
 }
 
 //Don't forget to add the thing to export stuff from this file to other files that need to use it
@@ -79,4 +96,6 @@ module.exports = {
   getPersonalGoals,
   addGoal,
   shareGoal,
+  getSharedWithClient,
+  getSharedByClient
 }

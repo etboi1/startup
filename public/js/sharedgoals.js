@@ -1,13 +1,14 @@
+let currentUser = localStorage.getItem('currentUser');
+
 async function onShareInit() {
-    let currentUser = localStorage.getItem('currentUser');
-    
     const usernameEl = document.querySelector('h8');
     usernameEl.textContent = `Welcome ${currentUser}!`;
 
     let sharedGoals = [];
     try {
-        const response = await fetch('/api/sharing');
+        const response = await fetch('/api/share');
         sharedGoals = await response.json()
+        localStorage.setItem('sharedGoals', sharedGoals);
     }
     catch {
         sharedGoals = localStorage.getItem('sharedGoals');
@@ -26,17 +27,16 @@ async function onShareInit() {
         newSharedGoalEl.appendChild(titleEl);
         
         const users = sharedGoals[i].users;
-        userList = users.split(',');
-        for (let ind = 0; ind < userList.length; ind++) {
+        for (let ind = 0; ind < users.length; ind++) {
             let newUser = document.createElement('span');
-            newUser.innerHTML = `${userList[ind]}`;
+            newUser.innerHTML = `${users[ind]}`;
             newSharedGoalEl.appendChild(newUser);
         }
     }
 }
 
 async function onSharedInit() {
-    let sharedWithMe = {};
+    let sharedWithMe = [];
     try {
         const response = await fetch(`/api/shared`);
         sharedWithMe = await response.json()
@@ -45,7 +45,10 @@ async function onSharedInit() {
         sharedWithMe = {'goalreacher': [{'goalTitle': 'Lose 10 Pounds', 'status': 'On Track', 'targetCompletionDate': '2024-03-02'}, {'goalTitle': 'Get an A in Math', 'status': 'Hit Milestone', 'targetCompletionDate': '2024-05-10'}], 
         'jmbohee29': [{'goalTitle': 'Run a 5 Minute Mile', 'status': 'Behind', 'targetCompletionDate': '2024-06-30'}]}
     }
-    for ([user, sharedGoals] of Object.entries(sharedWithMe)) {
+    for (let i = 0; i < sharedWithMe.length; i++) {
+        const thisSharedGoal = sharedWithMe.at(i);
+        const user = thisSharedGoal.username;
+
         const correctAccordion = document.getElementById('sharedWithMe');
         const innerContainerEl = document.createElement('div')
         innerContainerEl.classList.add('inner-container');
@@ -54,20 +57,18 @@ async function onSharedInit() {
         userNameEl.innerHTML = `${user}`;
         innerContainerEl.appendChild(userNameEl);
 
-        for (let i = 0; i < sharedGoals.length; i++) {
-            const goalTitle = sharedGoals[i].goalTitle;
-            const progressStatus = sharedGoals[i].status;
-            const dueDate = sharedGoals[i].targetCompletionDate;
-            
-            const goalInfoEl = document.createElement('span');
-            goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate}) - ${progressStatus}`;
-            // goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate})`;
+        const goalTitle = thisSharedGoal.goalTitle;
+        // const progressStatus = thisSharedGoal.status;
+        const dueDate = thisSharedGoal.targetCompletionDate;
+        
+        const goalInfoEl = document.createElement('span');
+        // goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate}) - ${progressStatus}`;
+        goalInfoEl.innerHTML = `${goalTitle} (Due: ${dueDate})`;
 
-            innerContainerEl.appendChild(goalInfoEl);
-        }
+        innerContainerEl.appendChild(goalInfoEl);
     }
 }
 
-onSharedInit()
-
 onShareInit()
+
+onSharedInit()

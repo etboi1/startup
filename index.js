@@ -128,7 +128,9 @@ secureApiRouter.post(`/goals`, async (req, res) => {
 
 //Get Goals Shared With You By Other People
 secureApiRouter.get(`/shared`, async (req, res) => {
-    const sharedWithClient = await DB.getSharedWithClient();
+    authToken = req.cookies[authCookieName];
+    const userDoc = await DB.getUserByToken(authToken);
+    const sharedWithClient = await DB.getSharedWithClient(userDoc.username);
     res.send(sharedWithClient);
 })
 // apiRouter.get(`/shared`, (req, res) => {
@@ -137,13 +139,18 @@ secureApiRouter.get(`/shared`, async (req, res) => {
 // })
 
 //Get Goals Shared by You
-
+secureApiRouter.get(`/share`, async (req, res) => {
+    authToken = req.cookies[authCookieName];
+    const userDoc = await DB.getUserByToken(authToken);
+    const sharedByClient = await DB.getSharedByClient(userDoc.username);
+    res.send(sharedByClient);
+})
 // apiRouter.get(`/sharing`, (req, res) => {
 //     res.send(sharedGoals);
 // });
 
 //Share a Goal
-secureApiRouter.put(`share`, async (req, res) => {
+secureApiRouter.put(`/share`, async (req, res) => {
     currentUser = req.body[username];
     goalTitle = req.body[goalTitle];
     //users will be a string, not a list
