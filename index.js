@@ -82,19 +82,6 @@ secureApiRouter.use(async (req, res, next) => {
     }
 })
 
-//Get currentUser
-// apiRouter.get(`/user`, (req, res) => {
-//     res.send(currentUser);
-// })
-
-//save usernames
-// apiRouter.post(`/user`, (req, res) => {
-//     currentUser = req.body.at(0);
-//     currentPassword = req.body.at(1);
-//     allUsers = addUser(currentUser, currentPassword, loginInfo, allGoals);
-//     res.send({'currentUser': `${currentUser}`});
-// })
-
 //Get Goals
 secureApiRouter.get(`/goals`, async (req, res) => {
     authToken = req.cookies[authCookieName];
@@ -102,9 +89,6 @@ secureApiRouter.get(`/goals`, async (req, res) => {
     const personalGoals = await DB.getPersonalGoals(userDoc.username);
     res.send(personalGoals);
 })
-// apiRouter.get(`/goals`, (req, res) => {
-//     res.send(allGoals[currentUser].personalGoals);
-// });
 
 //Submit New Goals
 secureApiRouter.post(`/goals`, async (req, res) => {
@@ -114,10 +98,6 @@ secureApiRouter.post(`/goals`, async (req, res) => {
     const personalGoals = await DB.getPersonalGoals();
     res.send(personalGoals);
 })
-// apiRouter.post(`/goals`, (req, res) => {
-//     personalGoals = updateGoals(req.body);
-//     res.send(personalGoals);
-// });
 
 //Report progress on a goal
 // apiRouter.post(`/progress`, (req, res) => {
@@ -133,10 +113,6 @@ secureApiRouter.get(`/shared`, async (req, res) => {
     const sharedWithClient = await DB.getSharedWithClient(userDoc.username);
     res.send(sharedWithClient);
 })
-// apiRouter.get(`/shared`, (req, res) => {
-//     const sharedWithMe = allGoals[currentUser].sharedGoals;
-//     res.send(sharedWithMe);
-// })
 
 //Get Goals Shared by You
 secureApiRouter.get(`/share`, async (req, res) => {
@@ -145,9 +121,6 @@ secureApiRouter.get(`/share`, async (req, res) => {
     const sharedByClient = await DB.getSharedByClient(userDoc.username);
     res.send(sharedByClient);
 })
-// apiRouter.get(`/sharing`, (req, res) => {
-//     res.send(sharedGoals);
-// });
 
 //Share a Goal
 secureApiRouter.put(`/share`, async (req, res) => {
@@ -158,10 +131,6 @@ secureApiRouter.put(`/share`, async (req, res) => {
     await DB.shareGoal(currentUser, goalTitle, users);
     res.status(204).end();
 })
-// apiRouter.post(`/share`, (req, res) => {
-//     sharedGoals = updateSharedGoals(req.body, sharedGoals);
-//     res.send(sharedGoals);
-// })
 
 //Default error handler
 app.use(function (err, req, res, next) {
