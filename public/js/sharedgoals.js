@@ -1,13 +1,6 @@
 async function onShareInit() {
-    let currentUser = ''
-    try {
-        const response = await fetch(`/api/user`);
-        const username = await response.text();
-        currentUser = username;
-    }
-    catch {
-        currentUser = localStorage.getItem('currentUser');
-    }
+    let currentUser = localStorage.getItem('currentUser');
+    
     const usernameEl = document.querySelector('h8');
     usernameEl.textContent = `Welcome ${currentUser}!`;
 

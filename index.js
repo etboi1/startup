@@ -146,8 +146,10 @@ secureApiRouter.get(`/shared`, async (req, res) => {
 secureApiRouter.put(`share`, async (req, res) => {
     currentUser = req.body[username];
     goalTitle = req.body[goalTitle];
+    //users will be a string, not a list
     users = req.body[users];
     await DB.shareGoal(currentUser, goalTitle, users);
+    res.send(204).end();
 })
 // apiRouter.post(`/share`, (req, res) => {
 //     sharedGoals = updateSharedGoals(req.body, sharedGoals);

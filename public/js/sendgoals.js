@@ -1,5 +1,5 @@
 async function onSendInit() {
-    let allGoals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
+    let allGoals = [];
     try {
         const response = await fetch('/api/goals');
         allGoals = await response.json();
@@ -10,33 +10,33 @@ async function onSendInit() {
             allGoals = JSON.parse(allGoals);
         }
     }
-    for ([goalType, specificGoals] of Object.entries(allGoals)) {
+    for (let i = 0; i < allGoals.length; i++) {
+        const thisGoal = allGoals.at(i);
+        const goalType = thisGoal.goalType;
         const typeOptionGrpEl = document.getElementById(`${goalType}Goals`);
 
-        if (specificGoals.length > 0) {
-            for (let i = 0; i < specificGoals.length; i++) {
-                const goalTitle = specificGoals[i].goalTitle;
+        const goalTitle = thisGoal.goalTitle
 
-                let newOption = document.createElement('option');
-                newOption.innerHTML = `${goalTitle}`;
+        let newOption = document.createElement('option');
+        newOption.innerHTML = `${goalTitle}`;
 
-                typeOptionGrpEl.appendChild(newOption);
-            }
-        }
-        else {
-            typeOptionGrpEl.remove()
-        }
+        typeOptionGrpEl.appendChild(newOption);
     }
+
+    // let goalTypes = ['PhysicalGoals', 'EducationalGoals', 'OccupationalGoals', 'HobbyGoals', 'SocialGoals'];
+    // for (let i = 0; i < goalTypes.length; i++) {
+    //     let optGroupType = goalTypes.at(i);
+    //     const optionGrpEl = document.getElementById(`${optGroupType}`);
+
+    // }
 }
 
 async function shareGoal() {
-    const goalTypeEl = document.querySelector('#goalname option:checked').parentElement.label;
+    const currentUser = localStorage.getItem("username");
     const goalTitleEl = document.getElementById("goalname");
     const usersEl = document.getElementById("users");
 
-    let goalType = goalTypeEl.split(' ').at(0)
-
-    const newShare = {"goalType": goalType, "goalTitle": goalTitleEl.value, "users": usersEl.value}
+    const newShare = {"username": currentUser, "goalTitle": goalTitleEl.value, "users": usersEl.value}
 
     try {
         const response = await fetch(`/api/share`, {
@@ -45,11 +45,9 @@ async function shareGoal() {
             body: JSON.stringify(newShare),
         })
         const sharedGoals = await response.json()
-        localStorage.setItem('sharedGoals', JSON.stringify(sharedGoals));
     }
     catch {
-        const sharedGoals = this.updateSharedGoals(newShare);
-        localStorage.setItem('sharedGoals', JSON.stringify(sharedGoals));
+        console.error('Error: unable to share goals at this time');
     }
    
     window.location.href = "sharegoals.html";

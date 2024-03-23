@@ -54,6 +54,7 @@ function addGoal(newGoal) {
 }
 
 async function shareGoal(currentUser, goalTitle, users) {
+  usersList = users.split(',');
   try {
     goalToShare = await goalCollection.updateOne(
       {
@@ -62,7 +63,7 @@ async function shareGoal(currentUser, goalTitle, users) {
           { goalTitle: goalTitle, }    
         ]
       }, 
-      { $push: {sharedWith : {$each: users, $slice: -users.length}}}
+      { $push: {sharedWith : {$each: usersList, $slice: -usersList.length}}}
     )
   }
   catch {
