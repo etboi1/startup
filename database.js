@@ -43,9 +43,10 @@ async function createUser(username, password) {
 }
 
 function getPersonalGoals(username) {
-  return goalCollection.find({
+  const cursor = goalCollection.find({
     username: username
   });
+  return cursor.toArray();
 }
 
 function addGoal(newGoal) {
