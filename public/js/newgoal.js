@@ -1,4 +1,5 @@
 async function saveGoal() {
+    const currentUser = localStorage.getItem("username");
     const titleEl = document.querySelector("#goalTitle");
     const typeEl = document.querySelector("#goalType");
     const descriptionEl = document.querySelector("#goalDescription");
@@ -6,11 +7,14 @@ async function saveGoal() {
     const milestoneDateEl = document.querySelector("#milestoneDate");
     const milestoneTitleEl = document.querySelector("#milestoneTitle");
 
-    const newGoalData = [typeEl.value, {"goalTitle": titleEl.value,
+    const newGoalData = {
+        "username": currentUser,
+        "goalType": typeEl.value,
+        "goalTitle": titleEl.value,
         "goalDescription": descriptionEl.value,
         "targetCompletionDate": completionDateEl.value,
         "milestoneDate": milestoneDateEl.value,
-        "milestoneTitle": milestoneTitleEl.value}]
+        "milestoneTitle": milestoneTitleEl.value}
 
     try {
         const response = await fetch('/api/goals', {
@@ -31,17 +35,14 @@ async function saveGoal() {
     window.location.href = "goals.html";
 }
 
-function updateGoals(newData) {
-    let goals = {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]};
+function updateGoals(newGoal) {
+    let goals = [];
     const goalsText = localStorage.getItem('goals');
     if (goalsText) {
         goals = JSON.parse(goalsText);
     }
 
-    goalType = newData.at(0);
-    newGoal = newData.at(1);
-
-    goals[goalType].push(newGoal);
+    goals.push(newGoal);
 
     return goals;
 }

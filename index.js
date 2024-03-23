@@ -97,8 +97,9 @@ secureApiRouter.use(async (req, res, next) => {
 
 //Get Goals
 secureApiRouter.get(`/goals`, async (req, res) => {
-    user = req.body[username];
-    const personalGoals = await DB.getPersonalGoals(user);
+    authToken = req.cookies[authCookieName];
+    const userDoc = await DB.getUserByToken(authToken);
+    const personalGoals = await DB.getPersonalGoals(userDoc.username);
     res.send(personalGoals);
 })
 // apiRouter.get(`/goals`, (req, res) => {
