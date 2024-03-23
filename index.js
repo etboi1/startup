@@ -38,7 +38,9 @@ apiRouter.post('/auth/create', async (req, res) => {
         //Set the cookie
         setAuthCookie(res, user.token);
 
-        res.status(204).end();
+        res.send({
+            id: user._id,
+        })
     }
 });
 
@@ -65,52 +67,95 @@ apiRouter.delete('/auth/logout', (req, res) => {
     res.status(204).end();
 })
 
-//Get currentUser
-apiRouter.get(`/user`, (req, res) => {
-    res.send(currentUser);
+//secureApiRouter for verifying credentials for endpoints
+let secureApiRouter = express.Router();
+apiRouter.use(secureApiRouter);
+
+secureApiRouter.use(async (req, res, next) => {
+    authToken = req.cookies[authCookieName];
+    const user = await DB.getUserByToken(authToken);
+    if (user) {
+        next();
+    }
+    else {
+        res.status(401).send({ msg: 'You are unauthorized to perform this action'})
+    }
 })
+
+//Get currentUser
+// apiRouter.get(`/user`, (req, res) => {
+//     res.send(currentUser);
+// })
 
 //save usernames
-apiRouter.post(`/user`, (req, res) => {
-    currentUser = req.body.at(0);
-    currentPassword = req.body.at(1);
-    allUsers = addUser(currentUser, currentPassword, loginInfo, allGoals);
-    res.send({'currentUser': `${currentUser}`});
-})
+// apiRouter.post(`/user`, (req, res) => {
+//     currentUser = req.body.at(0);
+//     currentPassword = req.body.at(1);
+//     allUsers = addUser(currentUser, currentPassword, loginInfo, allGoals);
+//     res.send({'currentUser': `${currentUser}`});
+// })
 
 //Get Goals
-apiRouter.get(`/goals`, (req, res) => {
-    res.send(allGoals[currentUser].personalGoals);
-});
+secureApiRouter.get(`/goals`, async (req, res) => {
+    user = req.body[username];
+    const personalGoals = await DB.getPersonalGoals(user);
+    res.send(personalGoals);
+})
+// apiRouter.get(`/goals`, (req, res) => {
+//     res.send(allGoals[currentUser].personalGoals);
+// });
 
 //Submit New Goals
-apiRouter.post(`/goals`, (req, res) => {
-    personalGoals = updateGoals(req.body);
+secureApiRouter.post(`/goals`, async (req, res) => {
+    //Make sure the body includes the username
+    const newGoal = {...req.body, sharingWith: []};
+    await DB.addGoal(newGoal);
+    const personalGoals = await DB.getPersonalGoals();
     res.send(personalGoals);
-});
+})
+// apiRouter.post(`/goals`, (req, res) => {
+//     personalGoals = updateGoals(req.body);
+//     res.send(personalGoals);
+// });
 
 //Report progress on a goal
-apiRouter.post(`/progress`, (req, res) => {
-    update = req.body;
-    updatedGoals = reportProgress(update);
-    res.send(updatedGoals);
-})
+// apiRouter.post(`/progress`, (req, res) => {
+//     update = req.body;
+//     updatedGoals = reportProgress(update);
+//     res.send(updatedGoals);
+// })
 
 //Get Goals Shared With You By Other People
-apiRouter.get(`/shared`, (req, res) => {
-    const sharedWithMe = allGoals[currentUser].sharedGoals;
-    res.send(sharedWithMe);
+secureApiRouter.get(`/shared`, async (req, res) => {
+    const sharedWithClient = await DB.getSharedWithClient();
+    res.send(sharedWithClient);
 })
+// apiRouter.get(`/shared`, (req, res) => {
+//     const sharedWithMe = allGoals[currentUser].sharedGoals;
+//     res.send(sharedWithMe);
+// })
 
 //Get Goals Shared by You
-apiRouter.get(`/sharing`, (req, res) => {
-    res.send(sharedGoals);
-});
 
-//Share New Goal
-apiRouter.post(`/share`, (req, res) => {
-    sharedGoals = updateSharedGoals(req.body, sharedGoals);
-    res.send(sharedGoals);
+// apiRouter.get(`/sharing`, (req, res) => {
+//     res.send(sharedGoals);
+// });
+
+//Share a Goal
+secureApiRouter.put(`share`, async (req, res) => {
+    currentUser = req.body[username];
+    goalTitle = req.body[goalTitle];
+    users = req.body[users];
+    await DB.shareGoal(currentUser, goalTitle, users);
+})
+// apiRouter.post(`/share`, (req, res) => {
+//     sharedGoals = updateSharedGoals(req.body, sharedGoals);
+//     res.send(sharedGoals);
+// })
+
+//Default error handler
+app.use(function (err, req, res, next) {
+    res.status(500).send({ type: err.name, message: err.message });
 })
 
 //send index.html as the default file
@@ -128,74 +173,74 @@ function setAuthCookie(res, authToken) {
 }
 
 //The Goals of all the Users
-let allGoals = {};
+// let allGoals = {};
 
 //Function for adding the current user to the list of users
-let loginInfo = {}
-let currentUser = '';
-function addUser(username, password, userPassList, allUserGoals) {
-    if (!(username in userPassList)) {
-        userPassList[username] = password;
-    }
-    currentUser = username;
-    if (!(currentUser in allGoals)) {
-        allUserGoals[currentUser] = {'personalGoals': {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]}, 'sharedGoals': {}}
-    }
-    return userPassList;
-}
+// let loginInfo = {}
+// let currentUser = '';
+// function addUser(username, password, userPassList, allUserGoals) {
+//     if (!(username in userPassList)) {
+//         userPassList[username] = password;
+//     }
+//     currentUser = username;
+//     if (!(currentUser in allGoals)) {
+//         allUserGoals[currentUser] = {'personalGoals': {'Physical':[], 'Educational':[], 'Occupational':[], 'Hobbies':[], 'Social':[]}, 'sharedGoals': {}}
+//     }
+//     return userPassList;
+// }
 
 //Function for adding a new goal
-function updateGoals(newData) {
-    goals = allGoals[currentUser].personalGoals
-    //add the new goal
-    goalType = newData.at(0);
-    newGoal = newData.at(1);
-    goals[goalType].push(newGoal);
-    //return the newly updated personal goals object
-    return goals;
-}
+// function updateGoals(newData) {
+//     goals = allGoals[currentUser].personalGoals
+//     //add the new goal
+//     goalType = newData.at(0);
+//     newGoal = newData.at(1);
+//     goals[goalType].push(newGoal);
+//     //return the newly updated personal goals object
+//     return goals;
+// }
 
 //Function for reporting progress
-function reportProgress(updateData) {
-    const progressingType = updateData.progressingType;
-    const progressingTitle = updateData.progressingTitle;
-    const status = updateData.status;
-    for ([goalType, goals] of Object.entries(allGoals[currentUser].personalGoals)) {
-        if (goalType === progressingType) {
-            for (let i =0; i < goals.length; i++) {
-                if (goals[i].goalTitle === progressingTitle) {
-                    goals[i].status = status;
-                    return allGoals;
-                }
-            }
-        }
-    } 
-}
+// function reportProgress(updateData) {
+//     const progressingType = updateData.progressingType;
+//     const progressingTitle = updateData.progressingTitle;
+//     const status = updateData.status;
+//     for ([goalType, goals] of Object.entries(allGoals[currentUser].personalGoals)) {
+//         if (goalType === progressingType) {
+//             for (let i =0; i < goals.length; i++) {
+//                 if (goals[i].goalTitle === progressingTitle) {
+//                     goals[i].status = status;
+//                     return allGoals;
+//                 }
+//             }
+//         }
+//     } 
+// }
 
 //Function for adding sharing a new goal
-let sharedGoals = []
-function updateSharedGoals(newShare, goalsCurrentlySharing) {
-    let goalType = newShare.goalType;
-    let goalTitle = newShare.goalTitle;
+// let sharedGoals = []
+// function updateSharedGoals(newShare, goalsCurrentlySharing) {
+//     let goalType = newShare.goalType;
+//     let goalTitle = newShare.goalTitle;
 
-    userShareList = newShare.users.split(',');
-    for (let i = 0; i < userShareList.length; i++) {
-        let user = userShareList.at(i)
-        if (allGoals[user]) {
-            if (!(allGoals[user].sharedGoals[currentUser])) {
-                allGoals[user].sharedGoals[currentUser] = [];
-            }
-            for (let i = 0; i < allGoals[currentUser].personalGoals[goalType].length; i++) {
-                if (allGoals[currentUser].personalGoals[goalType].at(i).goalTitle === goalTitle) {
-                    allGoals[user].sharedGoals[currentUser].push(allGoals[currentUser].personalGoals[goalType][i]);
-                }
-            }
-        }
-    }
-    goalsCurrentlySharing.push(newShare);
+//     userShareList = newShare.users.split(',');
+//     for (let i = 0; i < userShareList.length; i++) {
+//         let user = userShareList.at(i)
+//         if (allGoals[user]) {
+//             if (!(allGoals[user].sharedGoals[currentUser])) {
+//                 allGoals[user].sharedGoals[currentUser] = [];
+//             }
+//             for (let i = 0; i < allGoals[currentUser].personalGoals[goalType].length; i++) {
+//                 if (allGoals[currentUser].personalGoals[goalType].at(i).goalTitle === goalTitle) {
+//                     allGoals[user].sharedGoals[currentUser].push(allGoals[currentUser].personalGoals[goalType][i]);
+//                 }
+//             }
+//         }
+//     }
+//     goalsCurrentlySharing.push(newShare);
     
-    return goalsCurrentlySharing;
-}
+//     return goalsCurrentlySharing;
+// }
 
 app.listen(port, () => {
     console.log(`Listening on port ${port}`)

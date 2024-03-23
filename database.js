@@ -8,6 +8,7 @@ const url = `mongodb+srv://${config.username}:${config.password}@${config.hostna
 const client = new MongoClient(url);
 const db = client.db('startup');
 const userCollection = db.collection('user');
+const goalCollection = db.collection('goals');
 
 // Test that you can connect to the database
 (async function testConnection() {
@@ -24,6 +25,10 @@ function getUser(username) {
   return userCollection.findOne({ username });
 }
 
+function getUserByToken(token) {
+  return userCollection.findOne({ token: token });
+}
+
 async function createUser(username, password) {
   const hashedPassword = await bcrypt.hash(password, 14);
 
@@ -37,8 +42,39 @@ async function createUser(username, password) {
   return user;
 }
 
+function getPersonalGoals(username) {
+  return goalCollection.find({
+    username: username
+  });
+}
+
+function addGoal(newGoal) {
+  goalCollection.insertOne(newGoal);
+}
+
+async function shareGoal(currentUser, goalTitle, users) {
+  try {
+    goalToShare = await goalCollection.updateOne(
+      {
+        $and: [
+          { username: currentUser},
+          { goalTitle: goalTitle, }    
+        ]
+      }, 
+      { $push: {sharedWith : {$each: users, $slice: -users.length}}}
+    )
+  }
+  catch {
+    console.error("Error updating goal's share list");
+  }
+}
+
 //Don't forget to add the thing to export stuff from this file to other files that need to use it
 module.exports = {
   getUser,
+  getUserByToken,
   createUser,
+  getPersonalGoals,
+  addGoal,
+  shareGoal,
 }
