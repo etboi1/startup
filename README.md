@@ -77,6 +77,13 @@ For this deliverable I implemented my JavaScript so that the logic for all inter
 - **Backend service endpoints** - endpoints for storing and retrieving personal and shared goals
     - Unfortunately, I forgot one endpoint - that is the progress endpoint. I got part of it working, but not all of it. For now, just don't click on the report progress button. I will fix that later. I hope that's not too many points off, as the rest of it is all working
 - **Frontend calls service endpoints** - I did this using fetch
-<!-- ## DB/Login Deliverable
-## WebSocket Deliverable
+## DB/Login Deliverable
+For this deliverable, I associated all goals with a user. I also stored all goals and encrypted user credentials in the database.
+- MongoDB Atlas Database Created - Absolutely!
+- Stores Data in MongoDB - Yep! I have a goal collection, in which each document has the information for each individual goal, including the owner (user), the details of the goal, and which users it is shared with
+- User Registration - When a new user creates an account, the username, hashed password, and token are stored in a document in the user collection
+- Use MongoDB to store credentials - Yep! Just explained that above
+    - But as an added bonus, I even used database querying to support a sharing functionality between users!
+- Restricts Functionality - This is restricted on both the front and backend. In order to get past the landing page, you have to login (on the frontend), then to access *any* of my endpoints you have to authentication using the token stored in the cookie. This is because every endpoint has to do with retreiving, making, or sharing goals, which I only want a logged in user to be able to do
+<!-- ## WebSocket Deliverable
 ## React Deliverable -->
