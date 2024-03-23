@@ -63,7 +63,7 @@ async function shareGoal(currentUser, goalTitle, users) {
           { goalTitle: goalTitle, }    
         ]
       }, 
-      { $push: {sharedWith : {$each: usersList, $slice: -usersList.length}}}
+      { $push: {sharingWith : {$each: usersList, $slice: -usersList.length}}}
     );
   }
   catch {
