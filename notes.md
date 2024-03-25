@@ -504,3 +504,46 @@ Endpoint Design
 - Proxy messages between clients
 - Sending notifications to client
 - I was not having it today
+
+# Security
+
+### OWASP
+- Open Worldwide Application Secuirty Project (OWASP 10)
+    - Every year they put out the top ten things developers need to know to maintain security
+- **Current OWASP 10**
+    1. Broken Access Control
+        - URL bypass control (entering the full url to restricted access parts still allows the unauthenticated user access)            
+        - Resource path allows access (doesn't restrict the user to the main folder)
+    2. Cryptographic Failures
+        - Transmitting data as clear text
+        - Not encrypting at rest or transit
+        - Weak cryptography (SHA1, MD5)
+        - Misused cryptography (no salt, wrong params)
+    3. Injection
+        - User supplied data is not sanitized
+        - User supplied data programmatically executed
+    4. Insecure Design
+        - Not aware of best practices
+        - Unlimited trial accounts
+        - Customer data not segmented
+        - Single layer defense
+    5. Security Misconfiguration
+        - Development info exposed
+        - Using default configurations
+            - Default passwords and stuff
+        - Unnecessary features installed
+        - System not hardened
+    6. Vulnerable Components
+        - Unnecessary/unused packages 
+            - this includes underutilized imported packages (like if you're using a few funcitons from a several-thousand line file)
+        - Untrusted/verified
+        - Out of date software
+        - Not tracking vulnerability bulletins
+        - Package versions not locked
+    7. ID and Auth Failures
+        - Credential stuffing (compromised list)
+        - Brute force attacks (guess a password)
+        - Permitting weak passwords
+        - Weak credential recovery
+        - Credentials in URL
+        - Not expiring auth tokens
