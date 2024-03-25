@@ -547,3 +547,15 @@ Endpoint Design
         - Weak credential recovery
         - Credentials in URL
         - Not expiring auth tokens
+    8. Software Integrity Failures
+        - Unverified CDN usage
+        - Unverified packages (npm install)
+        - Unverified updates
+        - Insecure CD/CI platforms
+    9. Logging Failure
+        - Not logging critical requests
+        - Not monitoring system performance
+        - Logs not audited, automatic or manual
+        - Logs not stored centrally
+        - No real-time response
+- The Line of Death
