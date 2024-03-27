@@ -109,11 +109,6 @@ secureApiRouter.put(`/progress`, async (req, res) => {
     const personalGoals = await DB.getPersonalGoals();
     res.send(personalGoals);
 })
-// apiRouter.post(`/progress`, (req, res) => {
-//     update = req.body;
-//     updatedGoals = reportProgress(update);
-//     res.send(updatedGoals);
-// })
 
 //Get Goals Shared With You By Other People
 secureApiRouter.get(`/shared`, async (req, res) => {
