@@ -148,3 +148,6 @@ function configureWebSocket() {
         updateNotification(socketInfo.from);
     }
 }
+
+//When the client is brought to their main goals page, go ahead and establish the webSocket connection
+configureWebSocket()
