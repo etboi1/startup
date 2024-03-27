@@ -558,4 +558,3 @@ Endpoint Design
         - Logs not audited, automatic or manual
         - Logs not stored centrally
         - No real-time response
-- The Line of Death
