@@ -94,24 +94,19 @@ function sendToSharedGoals() {
 
 onInit();
 
-usernames = ['john17', 'alma34', 'jmbohee29', '2nephi2', '3nephi11', 'thefununcle1', 'goalreacher'];
-
-function updateNotification() {
+function updateNotification(sharingUser) {
     const outerNotification = document.getElementById('outer-notification');
-    const i = Math.floor(Math.random() * usernames.length);
     const actualNotification = document.createElement('button');
     actualNotification.classList.add('notification-inner');
     actualNotification.addEventListener('click', sendToSharedGoals);
     actualNotification.setAttribute('id', 'notification-inner');
-    actualNotification.innerHTML = `${usernames[i]} has shared a goal with you!`
+    actualNotification.innerHTML = `${sharingUser} has shared a goal with you!`
 
     outerNotification.appendChild(actualNotification);
     setTimeout(() => {
         outerNotification.innerHTML = ''; 
-    }, 5000);
+    }, 8000);
 }
-
-setInterval(function() {updateNotification()}, 15000)
 
 async function thirdPartyCall() {
     response = await fetch("https://type.fit/api/quotes");
@@ -137,4 +132,19 @@ function logout() {
     fetch(`/api/auth/logout`, {
         method: 'delete',
     }).then(() => (window.location.href = '/'));
+}
+
+function configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    socket = new WebSocket(`${protocol}}://${window.location.host}/ws`);
+    socket.onopen = (event) => {
+        console.log('WebSocket connection sucessfully established');
+    }
+    socket.onclose = (event) => {
+        console.log('WebSocket connection terminated');
+    }
+    socket.onmessage = async (event) => {
+        const socketInfo = JSON.parse(await event.data.text());
+        updateNotification(socketInfo.from);
+    }
 }
