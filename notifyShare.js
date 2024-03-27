@@ -1,7 +1,7 @@
 const { WebSocketServer } = require('ws');
-const uuid = require('uuid');
+const uuid = require('bcrypt');
 
-function notifyShare(httpServer) {
+async function notifyShare(httpServer) {
     //Create a websocket object
     const wss = new WebSocketServer({ noServer: true });
 
@@ -11,6 +11,13 @@ function notifyShare(httpServer) {
             //This sends back the connection event --> triggers the "onopen" event handler in the configureWebSocket
             wss.emit('connection', ws, request);
         })
+    })
+
+    let connections = []
+
+    wss.on('connection', (ws) => {
+        hashedUser = await bcrypt.hash()
+        const connection = { id: }
     })
 }
 

@@ -149,5 +149,16 @@ function configureWebSocket() {
     }
 }
 
+function broadcastEvent(from, users) {
+    const event = {
+        from: from,
+        shareWith: users,
+    }
+}
+
 //When the client is brought to their main goals page, go ahead and establish the webSocket connection
-configureWebSocket()
+configureWebSocket();
+
+module.exports = {
+    broadcastEvent,
+}
