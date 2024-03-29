@@ -570,3 +570,9 @@ Endpoint Design
 - JSX --> at the core of React
     - Combination of JavaScript and HTML
     - BABEL is the transpiler that turns the jsx into excecutable js for the browser
+- Components
+    - Allows you to not have to rewrite things all the time
+    - It's essentially a function stored in a variable that you can pass in as a parameter to the rendering thing in jsx (that's not technically what it is, but it behaves like that)
+    - Components have to be upper-case
+- Properties
+    - Use object destructuring to access the attributes of components
