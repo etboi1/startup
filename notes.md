@@ -558,3 +558,15 @@ Endpoint Design
         - Logs not audited, automatic or manual
         - Logs not stored centrally
         - No real-time response
+
+# Web Frameworks
+
+### Introduction to React
+- Why Use Web Frameworks?
+    - Simplify common patterns
+    - Provide common components
+    - Improve performance
+    - Increase device coverage
+- JSX --> at the core of React
+    - Combination of JavaScript and HTML
+    - BABEL is the transpiler that turns the jsx into excecutable js for the browser
