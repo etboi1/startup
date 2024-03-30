@@ -136,15 +136,16 @@ function logout() {
 
 function configureWebSocket() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    socket = new WebSocket(`${protocol}}://${window.location.host}/ws`, {
-        headers: {
+    socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+    socket.onopen = () => {
+        const headerMessage = {
+            type: 'header',
             username: currentUser,
         }
-    });
-    socket.onopen = (event) => {
+        socket.send(JSON.stringify(headerMessage));
         console.log('WebSocket connection sucessfully established');
     }
-    socket.onclose = (event) => {
+    socket.onclose = () => {
         console.log('WebSocket connection terminated');
     }
     socket.onmessage = async (event) => {
@@ -155,6 +156,7 @@ function configureWebSocket() {
 
 function broadcastEvent(from, users) {
     const event = {
+        type: 'share',
         from: from,
         shareWith: users,
     }

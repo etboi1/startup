@@ -1,7 +1,6 @@
 const { WebSocketServer } = require('ws');
-const uuid = require('bcrypt');
 
-async function notifyShare(httpServer) {
+function notifyShare(httpServer) {
     //Create a websocket object
     const wss = new WebSocketServer({ noServer: true });
 
@@ -16,27 +15,27 @@ async function notifyShare(httpServer) {
     let connections = []
 
     wss.on('connection', (ws) => {
-        //Gets username from the header, hashes it and then adds it to the list of active connections
-        const username = req.headers['username'];
-        console.log('Username from handshake:', username);
-        hashedUsername = bcrypt.hash(username);
-        const connection = { id: hashedUsername, alive: true, ws: ws };
-        connections.push(hashedUsername);
-
         //Forward message to the users the goal was shared with, as long as they're active
+        let connection = {}
+
         ws.on('message', function message(message) {
             const data = JSON.parse(message);
-            const users = data.shareWith;
-            let hashedUsers = []
-            users.foreach((u) => {
-                let hashedUser = bcrypt.hash(u);
-                hashedUsers.push(hashedUser);
-            });
-            connections.foreach((c) => {
-                if (hashedUsers.includes(c.id)) {
-                    c.ws.send(message);
-                }
-            })
+            if (data.type === 'header') {
+                const username = data.username;
+                console.log('Username from header:', username);
+                connection = { id: username, alive: true, ws: ws };
+                connections.push(connection);
+                console.log(connections);
+            }
+            else {
+                const users = data.shareWith;
+                connections.foreach((c) => {
+                    if (users.includes(c.id)) {
+                        c.ws.send(message);
+                        console.log(`sent message to ${c.id}`);
+                    }
+                })
+            };
         })
 
         //Close event handler. Delete connection from the active connections list
@@ -46,6 +45,8 @@ async function notifyShare(httpServer) {
             if (pos >= 0) {
                 connections.splice(pos, 1);
             }
+
+            console.log(`Connection with ${connection.id} terminated`)
         })
 
         //Respond to pong messages by marking the connection alive (this is for keeping the connection alive)
