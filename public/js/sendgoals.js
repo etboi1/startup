@@ -1,3 +1,5 @@
+let currentUser = localStorage.getItem('username');
+
 async function onSendInit() {
     let allGoals = [];
     try {
@@ -22,13 +24,33 @@ async function onSendInit() {
 
         typeOptionGrpEl.appendChild(newOption);
     }
+}
 
-    // let goalTypes = ['PhysicalGoals', 'EducationalGoals', 'OccupationalGoals', 'HobbyGoals', 'SocialGoals'];
-    // for (let i = 0; i < goalTypes.length; i++) {
-    //     let optGroupType = goalTypes.at(i);
-    //     const optionGrpEl = document.getElementById(`${optGroupType}`);
+function configureWebSocket() {
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    socket = new WebSocket(`${protocol}}://${window.location.host}/ws`, {
+        headers: {
+            username: currentUser,
+        }
+    });
+    socket.onopen = (event) => {
+        console.log('WebSocket connection sucessfully established');
+    }
+    socket.onclose = (event) => {
+        console.log('WebSocket connection terminated');
+    }
+    socket.onmessage = async (event) => {
+        const socketInfo = JSON.parse(await event.data.text());
+        updateNotification(socketInfo.from);
+    }
+}
 
-    // }
+function broadcastEvent(from, users) {
+    const event = {
+        from: from,
+        shareWith: users,
+    }
+    socket.send(JSON.stringify(event));
 }
 
 async function shareGoal() {
@@ -45,6 +67,9 @@ async function shareGoal() {
             body: JSON.stringify(newShare),
         })
         const sharedGoals = await response.json()
+        configureWebSocket();
+        let userList = usersEl.value.split(',');
+        broadcastEvent(currentUser, userList);
     }
     catch {
         console.error('Error: unable to share goals at this time');
