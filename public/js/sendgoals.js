@@ -1,5 +1,23 @@
 let currentUser = localStorage.getItem('username');
 
+const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
+socket.onopen = () => {
+    const headerMessage = {
+        type: 'header',
+        username: currentUser,
+    }
+    socket.send(JSON.stringify(headerMessage));
+    console.log('WebSocket connection sucessfully established');
+}
+socket.onclose = () => {
+    console.log('WebSocket connection terminated');
+}
+socket.onmessage = async (event) => {
+    const socketInfo = JSON.parse(await event.data.text());
+    updateNotification(socketInfo.from);
+}
+
 async function onSendInit() {
     let allGoals = [];
     try {
@@ -26,26 +44,6 @@ async function onSendInit() {
     }
 }
 
-function configureWebSocket() {
-    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    socket = new WebSocket(`${protocol}://${window.location.host}/ws`);
-    socket.onopen = () => {
-        const headerMessage = {
-            type: 'header',
-            username: currentUser,
-        }
-        socket.send(JSON.stringify(headerMessage));
-        console.log('WebSocket connection sucessfully established');
-    }
-    socket.onclose = () => {
-        console.log('WebSocket connection terminated');
-    }
-    socket.onmessage = async (event) => {
-        const socketInfo = JSON.parse(await event.data.text());
-        updateNotification(socketInfo.from);
-    }
-}
-
 function broadcastEvent(from, users) {
     const event = {
         type: 'share',
@@ -63,12 +61,11 @@ async function shareGoal() {
     const newShare = {"username": currentUser, "goalTitle": goalTitleEl.value, "users": usersEl.value}
 
     try {
-        const response = await fetch(`/api/share`, {
+        await fetch(`/api/share`, {
             method: 'PUT',
             headers: {'content-type': 'application/json'},
             body: JSON.stringify(newShare),
         })
-        configureWebSocket();
         let userList = usersEl.value.split(',');
         broadcastEvent(currentUser, userList);
     }

@@ -29,7 +29,7 @@ function notifyShare(httpServer) {
             }
             else {
                 const users = data.shareWith;
-                connections.foreach((c) => {
+                connections.forEach((c) => {
                     if (users.includes(c.id)) {
                         c.ws.send(message);
                         console.log(`sent message to ${c.id}`);
