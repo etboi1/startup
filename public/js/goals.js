@@ -1,6 +1,6 @@
-async function onInit() {
-    let currentUser =  localStorage.getItem('username');
+let currentUser =  localStorage.getItem('username');
 
+async function onInit() {
     const usernameEl = document.querySelector('h8');
     usernameEl.textContent = `Welcome ${currentUser}!`;
 
@@ -136,7 +136,11 @@ function logout() {
 
 function configureWebSocket() {
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
-    socket = new WebSocket(`${protocol}}://${window.location.host}/ws`);
+    socket = new WebSocket(`${protocol}}://${window.location.host}/ws`, {
+        headers: {
+            username: currentUser,
+        }
+    });
     socket.onopen = (event) => {
         console.log('WebSocket connection sucessfully established');
     }
@@ -154,11 +158,8 @@ function broadcastEvent(from, users) {
         from: from,
         shareWith: users,
     }
+    socket.send(JSON.stringify(event));
 }
 
 //When the client is brought to their main goals page, go ahead and establish the webSocket connection
 configureWebSocket();
-
-module.exports = {
-    broadcastEvent,
-}
