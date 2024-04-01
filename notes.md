@@ -576,3 +576,7 @@ Endpoint Design
     - Components have to be upper-case
 - Properties
     - Use object destructuring to access the attributes of components
+
+### React Router, Toolchains, Vite
+- Vite --> frontend dev tool that helps to create a toolchain
+- 
