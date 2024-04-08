@@ -588,3 +588,5 @@ Endpoint Design
 - file type is .ts
 - example of syntax: 
     - variable: type = value stored in variable
+- Interfaces are basically a java script object, and then you declare the type of each attribute within the interface:
+    - interface (TITLE) { attribute: (TYPE); attribute: (TYPE) }
