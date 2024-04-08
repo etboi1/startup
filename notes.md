@@ -590,3 +590,13 @@ Endpoint Design
     - variable: type = value stored in variable
 - Interfaces are basically a java script object, and then you declare the type of each attribute within the interface:
     - interface (TITLE) { attribute: (TYPE); attribute: (TYPE) }
+- you have to coerce some things to be able to access the right thing sometimes
+
+### Performance
+- optimize for real usage (cache, bandwidth, cpu, storage)
+- optimize based on data
+- prioritize bottlenecks
+- look at download size
+- compress, reduce, minify
+- lazy load
+- use psychology
