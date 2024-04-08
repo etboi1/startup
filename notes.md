@@ -580,3 +580,11 @@ Endpoint Design
 ### React Router, Toolchains, Vite
 - Vite --> frontend dev tool that helps to create a toolchain
 - 
+
+# Extra Stuff
+
+### Typescript
+- typescript is JS with strong type
+- file type is .ts
+- example of syntax: 
+    - variable: type = value stored in variable
