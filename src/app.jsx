@@ -15,6 +15,11 @@ function App() {
     return (
         <BrowserRouter>
             <div className='body'>
+                {authState === AuthState.Unauthenticated && (
+                    <header className="header">
+                        <h1>Welcome to REACH! Goals</h1>
+                    </header>
+                )}
                 {authState === AuthState.Authenticated && (
                 <header className="header">
                     <nav className="nav">
