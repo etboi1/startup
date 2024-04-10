@@ -1,37 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REACH! - Login</title>
-    <link rel="stylesheet" href="css/login.css">
-</head>
-<body>
-    <header>
-        <h1>Welcome to REACH! Goals</h1>
-    </header>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
 
-    <main>
-        <img class="dwayne" src="https://m.media-amazon.com/images/I/51UaQQbtyoL._AC_UF894,1000_QL80_.jpg" alt='Dwayne "The Rock" Johnson Inspirational Quote'>
-        <!-- This is the login area -->
-        <div class="form">
-            <label for="login"><h2>Login or Create Account:</h2></label>
-            <input id="username" placeholder="Username..." type="text">
-            <input id="password" placeholder="Password..." type="password">
-            <label for="login-button">Enter credentials first</label>
-            <div class="button-container">
-                <button onclick="loginUser()" class="login-button" type="submit">Login</button>
-                <button onclick="createUser()" class="login-button" type="submit">Create Account</button>
-            </div>
-            <div class="error-msg" id="error"></div>
-        </div>
-    </main>
-
-    <script src="js/login.js"></script>
-
-    <footer>
-        <span>Ethan Grundvig</span>
-        <a href="https://github.com/etboi1/startup">GitHub</a>
-    </footer>
-</body>
+    <title>REACH!</title>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+    <script type="module" src="/index.jsx"></script>
+  </body>
 </html>
