@@ -16,6 +16,18 @@ body {
    align-items: center;
 }
 
+.body {
+   display: flex;
+   flex-direction: column;
+   flex: 1;
+   color: rgba(0, 0, 0, 0.708);
+   margin: 0;
+   padding: 0;
+   align-items: center;
+   width: 100%;
+   height: 100%;
+}
+
 .notification-outer {
    position: fixed;
    top: 5px;
@@ -114,7 +126,7 @@ button.notification-inner:hover {
    align-items: center;
 }
 
-h8 {
+h6 {
    text-align: center;
 }
 

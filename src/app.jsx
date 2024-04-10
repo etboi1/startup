@@ -8,13 +8,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
 function App() {
-    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
-    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [username, setUsername] = React.useState(localStorage.getItem('username') || '');
+    const currentAuthState = username ? AuthState.Authenticated : AuthState.Unauthenticated;
     const [authState, setAuthState] = React.useState(currentAuthState);
 
     return (
         <BrowserRouter>
-            <div>
+            <div className='body'>
                 {authState === AuthState.Authenticated && (
                 <header className="header">
                     <nav className="nav">
@@ -30,19 +30,27 @@ function App() {
                         {/* <h3 class="navitem">
                             <NavLink to='/simon'>Simon</NavLink>
                         </h3> */}
-                        <h8 className="username"></h8>
+                        <h6 className="username">{username}</h6>
                     </nav>
                 </header>
                 )}
 
-                {authState === AuthState.Authenticated && (
-                    <Routes>
-                        <Route path='/goals' element={<Goals />} />
-                        <Route path='/share' element={<Share />} />
-                        {/* <Route path='/simon' element={<Redirect to='https://simon.reachgoals.click/' />} /> */}
-                        <Route path='*' element={<NotFound />} />
-                    </Routes>
-                )}
+                <Routes>
+                    <Route path='/' element={
+                        <Login
+                        username={username}
+                        authState={authState}
+                        onAuthChange={(username, authState) => {
+                            setAuthState(authState);
+                            setUsername(username);
+                        }}
+                        />
+                    } />
+                    <Route path='/goals' element={<Goals />} />
+                    <Route path='/share' element={<Share />} />
+                    {/* <Route path='/simon' element={<Redirect to='https://simon.reachgoals.click/' />} /> */}
+                    <Route path='*' element={<NotFound />} />
+                </Routes>
 
                 <footer>
                     <span>Ethan Grundvig</span>
