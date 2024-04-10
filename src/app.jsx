@@ -5,7 +5,7 @@ import { Goals } from './goals/goals';
 import { Share } from './sharePage/sharedgoals';
 import { AuthState} from './login/authState';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'styles.css';
+import './styles.css';
 
 function App() {
     const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
@@ -21,16 +21,16 @@ function App() {
                         <h2 className="navtitle">
                             REACH!
                         </h2>
-                        <h3 class="navitem">
+                        <h3 className="navitem">
                             <NavLink to='goals'>Personal Goals</NavLink>
                         </h3>
-                        <h3 class="navitem">
+                        <h3 className="navitem">
                             <NavLink to='share'>Shared Goals</NavLink>
                         </h3>
-                        <h3 class="navitem">
+                        {/* <h3 class="navitem">
                             <NavLink to='/simon'>Simon</NavLink>
-                        </h3>
-                        <h8 class="username"></h8>
+                        </h3> */}
+                        <h8 className="username"></h8>
                     </nav>
                 </header>
                 )}
@@ -39,7 +39,7 @@ function App() {
                     <Routes>
                         <Route path='/goals' element={<Goals />} />
                         <Route path='/share' element={<Share />} />
-                        <Route path='/simon' element={<Redirect to='https://simon.reachgoals.click/' />} />
+                        {/* <Route path='/simon' element={<Redirect to='https://simon.reachgoals.click/' />} /> */}
                         <Route path='*' element={<NotFound />} />
                     </Routes>
                 )}
@@ -48,7 +48,7 @@ function App() {
                     <span>Ethan Grundvig</span>
                     <a href="https://github.com/etboi1/startup">GitHub</a>
                     {authState === AuthState.Authenticated && (
-                        <button class='button' onClick="Logout()">Logout</button>
+                        <button className='button' onClick="Logout()">Logout</button>
                     )}
                 </footer>
             </div>
