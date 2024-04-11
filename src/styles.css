@@ -254,6 +254,10 @@ footer {
    justify-content: flex-start;
 }
 
+.accordion {
+   width: 90%;
+}
+
 @media (max-height: 100%) {
    header {
      display: flex;
