@@ -10,7 +10,7 @@ export function Login({ username, authState}) {
     return (
         <main>
             {authState != AuthState.Unknown && 
-                <img class="dwayne" src="https://m.media-amazon.com/images/I/51UaQQbtyoL._AC_UF894,1000_QL80_.jpg" alt="Dwayne &quot;The Rock&quot; Johnson Inspirational Quote"></img>
+                <img className="dwayne" src="https://m.media-amazon.com/images/I/51UaQQbtyoL._AC_UF894,1000_QL80_.jpg" alt="Dwayne &quot;The Rock&quot; Johnson Inspirational Quote"></img>
             }
             {authState === AuthState.Authenticated && (
                 <Authenticated username={username} onLogout={() => onAuthChange(username, AuthState.Unauthenticated)} />
