@@ -13,6 +13,7 @@ export function Authenticated(props) {
         .finally(() => {
             localStorage.removeItem('username');
             props.onLogout();
+            Reroute('/');
         })
     }
 

@@ -23,13 +23,13 @@ export function Unauthenticated(props) {
     async function loginOrCreate(endpoint) {
         const response = await fetch(endpoint, {
             method: 'post',
-            body: JSON.stringify({email: username, password: password}),
+            body: JSON.stringify({username: username, password: password}),
             headers: {
                 'Content-type': 'application/json; charset=UTF-8',
             },
         });
         if (response?.status === 200) {
-          localStorage.setItem('userName', username);
+          localStorage.setItem('username', username);
           props.onLogin(username);
           navigate('/goals');
         } else {

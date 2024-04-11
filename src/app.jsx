@@ -27,6 +27,9 @@ function App() {
                             REACH!
                         </h2>
                         <h3 className="navitem">
+                            <NavLink to=''>Home</NavLink>
+                        </h3>
+                        <h3 className="navitem">
                             <NavLink to='goals'>Personal Goals</NavLink>
                         </h3>
                         <h3 className="navitem">
@@ -53,16 +56,12 @@ function App() {
                     } />
                     <Route path='/goals' element={<Goals />} />
                     <Route path='/share' element={<Share />} />
-                    {/* <Route path='/simon' element={<Redirect to='https://simon.reachgoals.click/' />} /> */}
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 
                 <footer>
                     <span>Ethan Grundvig</span>
                     <a href="https://github.com/etboi1/startup">GitHub</a>
-                    {authState === AuthState.Authenticated && (
-                        <button className='button' onClick="Logout()">Logout</button>
-                    )}
                 </footer>
             </div>
         </BrowserRouter>

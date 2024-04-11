@@ -6,7 +6,7 @@ import { AuthState } from './authState';
 
 import './login.css';
 
-export function Login({ username, authState}) {
+export function Login({ username, authState, onAuthChange}) {
     return (
         <main>
             {authState != AuthState.Unknown && 
