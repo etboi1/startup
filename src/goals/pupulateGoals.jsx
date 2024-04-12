@@ -13,7 +13,7 @@ export function PopulateGoals(props) {
                 goals.push(
                     <div className='inner-container' key={goal.goalTitle}>
                         <strong>{goal.goalTitle}</strong>
-                        <span>Due Date - {goal.dueDate}</span>
+                        <span>Due Date - {goal.targetCompletionDate}</span>
                         <span>{goal.milestoneTitle} - {goal.milestoneDate}</span>
                         <div>
                             <button className='button' type='submit' onClick={() => navigate('/progress')}>Report Progress</button>
