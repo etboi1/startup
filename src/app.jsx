@@ -1,9 +1,12 @@
 import React from 'react';
-import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
 import { Login } from './login/login';
 import { Goals } from './goals/goals';
 import { Share } from './sharePage/sharedgoals';
 import { AuthState} from './login/authState';
+import { NewGoal} from './add/addGoal';
+import { UpdateGoal } from './progress/progress';
+import { ShareGoal } from './send/send';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
@@ -38,7 +41,7 @@ function App() {
                         {/* <h3 class="navitem">
                             <NavLink to='/simon'>Simon</NavLink>
                         </h3> */}
-                        <h6 className="username">{username}</h6>
+                        <h6 className="username">Welcome {username}!</h6>
                     </nav>
                 </header>
                 )}
@@ -56,6 +59,9 @@ function App() {
                     } />
                     <Route path='/goals' element={<Goals />} />
                     <Route path='/share' element={<Share />} />
+                    <Route path='/add' element={<NewGoal />} />
+                    <Route path='/send' element={<ShareGoal />} />
+                    <Route path='/progress' element={<UpdateGoal />} />
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 
