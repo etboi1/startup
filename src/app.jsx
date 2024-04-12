@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, NavLink, Route, Routes, useLocation } from 'react-router-dom';
+import { BrowserRouter, NavLink, Route, Routes, useLocation} from 'react-router-dom';
 import { Login } from './login/login';
 import { Goals } from './goals/goals';
 import { Share } from './sharePage/sharedgoals';
@@ -7,6 +7,7 @@ import { AuthState} from './login/authState';
 import { NewGoal} from './add/addGoal';
 import { UpdateGoal } from './progress/progress';
 import { ShareGoal } from './send/send';
+import { CheckLocation } from './checkLocation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles.css';
 
@@ -66,6 +67,7 @@ function App() {
                 </Routes>
 
                 <footer>
+                    <CheckLocation />
                     <span>Ethan Grundvig</span>
                     <a href="https://github.com/etboi1/startup">GitHub</a>
                 </footer>
