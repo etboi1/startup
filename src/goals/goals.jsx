@@ -2,6 +2,8 @@ import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import { PopulateGoals } from './pupulateGoals';
 import { useNavigate } from 'react-router-dom';
+import { WebSocketManager } from '../WebSocketManager';
+import { DisplayNotification } from './notifications';
 
 import '../styles.css';
 
@@ -9,7 +11,10 @@ export function Goals() {
     const [quote, setQuote] = React.useState('Loading...');
     const [author, setAuthor] = React.useState('');
     const [personalGoals, setPersonalGoals] = React.useState([]);
+    const [notification, setNotification] = React.useState('');
     const navigate = useNavigate();
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    const url = `${protocol}://${window.location.host}/ws`
 
     React.useEffect(() => {
         fetch('/api/goals')
@@ -35,8 +40,23 @@ export function Goals() {
             })
     }, []);
 
+    const handleMessage = (notification) => {
+        setNotification(notification);
+    }
+
     return (
         <main>
+            <WebSocketManager 
+                currentUser={localStorage.getItem('username')}
+                url={url}
+                onMessage={handleMessage}
+            />
+            <div className='notification-outer' id='outer-notification'>
+                <DisplayNotification 
+                    durationInSeconds={15}
+                    notificationText={notification}
+                />
+            </div>
             <h1 className='fix-header'>Personal Goals</h1>
             <h4 className='center-text' id='inspirationalQuote'>{quote} - {author}</h4>
             <Accordion defaultActiveKey="0" className='accordion'>

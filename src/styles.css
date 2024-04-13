@@ -35,7 +35,7 @@ body {
    z-index: 1;
 }
 
-button.notification-inner {
+.button-notification-inner {
    padding: 10px;
    border-color: navy;
    border-style: solid;
@@ -45,7 +45,7 @@ button.notification-inner {
    color: navy;
 }
 
-button.notification-inner:hover {
+.button-notification-inner:hover {
    background-color: #e7f1ff;
    transition: .25s;
 }
