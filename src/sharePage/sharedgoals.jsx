@@ -41,6 +41,7 @@ export function Share() {
 
     return (
         <main>
+            <h1>Shared Goals</h1>
             <Accordion defaultActiveKey="0" className='accordion'>
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>Shared with You</Accordion.Header>
