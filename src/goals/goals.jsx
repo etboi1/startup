@@ -11,7 +11,7 @@ export function Goals() {
     const [quote, setQuote] = React.useState('Loading...');
     const [author, setAuthor] = React.useState('');
     const [personalGoals, setPersonalGoals] = React.useState([]);
-    const [notification, setNotification] = React.useState('');
+    const [notification, setNotification] = React.useState(null);
     const navigate = useNavigate();
     const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
     const url = `${protocol}://${window.location.host}/ws`
@@ -41,7 +41,7 @@ export function Goals() {
     }, []);
 
     const handleMessage = (notification) => {
-        setNotification(notification);
+        setNotification(notification.from);
     }
 
     return (
@@ -52,10 +52,11 @@ export function Goals() {
                 onMessage={handleMessage}
             />
             <div className='notification-outer' id='outer-notification'>
-                <DisplayNotification 
+                {notification && <DisplayNotification 
                     durationInSeconds={15}
-                    notificationText={notification}
+                    sharer={notification}
                 />
+                }
             </div>
             <h1 className='fix-header'>Personal Goals</h1>
             <h4 className='center-text' id='inspirationalQuote'>{quote} - {author}</h4>

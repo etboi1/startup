@@ -15,9 +15,9 @@ export function PopulateGoals(props) {
                         <strong>{goal.goalTitle}</strong>
                         <span>Due Date - {goal.targetCompletionDate}</span>
                         <span>{goal.milestoneTitle} - {goal.milestoneDate}</span>
-                        <div>
+                        {/* <div>
                             <button className='button' type='submit' onClick={() => navigate('/progress')}>Report Progress</button>
-                        </div>
+                        </div> */}
                     </div>
                 )
             }

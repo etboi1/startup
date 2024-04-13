@@ -17,7 +17,7 @@ export function DisplayNotification(props) {
     }, [props.durationInSeconds]);
 
     return isVisible ? (
-        <button className='inner-notification button-notification-inner' id='notification-inner' onClick={() => {navigate('/share')}}>{props.notificationText}</button>
+        <button className='inner-notification button-notification-inner' id='notification-inner' onClick={() => {navigate('/share')}}>{props.sharer} has shared a goal with you!</button>
     )
     : null
 }

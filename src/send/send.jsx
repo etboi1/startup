@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { WebSocketManager } from '../WebSocketManager';
 import '../forms.css';
 
 export function ShareGoal() {
@@ -8,6 +9,8 @@ export function ShareGoal() {
     const [users, setUsers] = React.useState('');
     const currentUser = localStorage.getItem('username');
     const navigate = useNavigate();
+    const protocol = window.location.protocol === 'http:' ? 'ws' : 'wss';
+    const [url] = React.useState(`${protocol}://${window.location.host}/ws`)
     
     React.useEffect(() => {
         fetch('/api/goals')
@@ -47,7 +50,12 @@ export function ShareGoal() {
                 body: JSON.stringify(newShare),
             })
             let userList = users.split(',');
-            // broadcastEvent(currentUser, userList);
+            const event = {
+                type: 'share',
+                from: currentUser,
+                shareWith: userList,
+            }
+            sendMessage(event)
         }
         catch {
             console.error('Error: unable to share goals at this time');
@@ -57,8 +65,30 @@ export function ShareGoal() {
         }
     }
 
+    const handleMessage = (notification) => {
+        console.log('Message received. Messages can only be viewed on the personal goals page.')
+    }
+
+    const sendMessage = (message) => {
+        // Logic to send message through WebSocket connection
+        console.log('Sending message from ParentComponent:', message);
+    
+        // Create a new WebSocket connection for sending messages
+        const ws = new WebSocket(url);
+        ws.onopen = () => {
+          console.log('WebSocket connected for sending');
+          ws.send(JSON.stringify(message));
+          ws.close(); // Close the connection after sending the message
+        };
+      };
+
     return (
         <main>
+            <WebSocketManager 
+                currentUser={localStorage.getItem('username')}
+                url={url}
+                onMessage={handleMessage}
+            />
             <h1>Share a Goal!</h1>
             <div className='form'>
                 <label htmlFor="goalTitle">Goal Title:</label>

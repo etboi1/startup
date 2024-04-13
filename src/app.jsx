@@ -5,7 +5,6 @@ import { Goals } from './goals/goals';
 import { Share } from './sharePage/sharedgoals';
 import { AuthState} from './login/authState';
 import { NewGoal} from './add/addGoal';
-import { UpdateGoal } from './progress/progress';
 import { ShareGoal } from './send/send';
 import { CheckLocation } from './checkLocation';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -62,7 +61,7 @@ function App() {
                     <Route path='/share' element={<Share />} />
                     <Route path='/add' element={<NewGoal />} />
                     <Route path='/send' element={<ShareGoal />} />
-                    <Route path='/progress' element={<UpdateGoal />} />
+                    {/* <Route path='/progress' element={<UpdateGoal />} /> */}
                     <Route path='*' element={<NotFound />} />
                 </Routes>
 
