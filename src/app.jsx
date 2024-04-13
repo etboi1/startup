@@ -67,7 +67,7 @@ function App() {
                 </Routes>
 
                 <footer>
-                    <CheckLocation />
+                    {/* <CheckLocation /> */}
                     <span>Ethan Grundvig</span>
                     <a href="https://github.com/etboi1/startup">GitHub</a>
                 </footer>

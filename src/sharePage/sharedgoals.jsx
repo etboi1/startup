@@ -1,10 +1,13 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PopulateShare } from './populateShare';
 import Accordion from 'react-bootstrap/Accordion';
+import '../styles.css';
 
 export function Share() {
     const [sharedGoals, setSharedGoals] = React.useState([]);
     const [sharedWithMe, setSharedWithMe] = React.useState([]);
+    const navigate = useNavigate();
 
     React.useEffect(() => {
         fetch('/api/shared')
@@ -58,6 +61,7 @@ export function Share() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
+            <button onClick={() => navigate('/send')} className='button' type='submit'>Share Goal</button>
         </main>
     )
 }

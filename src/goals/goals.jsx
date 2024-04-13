@@ -1,11 +1,13 @@
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
 import { PopulateGoals } from './pupulateGoals';
+import { useNavigate } from 'react-router-dom';
 
 import '../styles.css';
 
 export function Goals() {
     const [personalGoals, setPersonalGoals] = React.useState([]);
+    const navigate = useNavigate();
 
     React.useEffect(() => {
         fetch('/api/goals')
@@ -73,6 +75,7 @@ export function Goals() {
                     </Accordion.Body>
                 </Accordion.Item>
             </Accordion>
+            <button onClick={() => navigate('/add')} className='button' type='submit'>Add Goal</button>
         </main>
     )
 }
