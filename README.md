@@ -95,4 +95,10 @@ For this deliverable, I used webSocket to notify users that another user had sha
 - **Frontend makes WebSocket connection** - yessirrrrrr
 - **Data sent over WebSocket connection** - successfully implemented! This includes sending data from the frontend to the backend upon initialization (specifically the username is sent), and sending a message that a user has shared a goal from one client to the server, then to another client.
 - **WebSocket data displayed** - this is finished, but it may be hard to grade. This is because (1) the user must be on the personal goals page to receive the notification (if they were on the shared goals page they would automatically see the goal itself pop up), (2) both the user receiving a shared goal and the user sharing the goal must both be active, and (3) only the user that receives the goal is notified, not every user. In addition, this is the only thing concerning WebSocket that is displayed for the user to see. Everything else is just logged in the console (connection, termination, etc)
-<!-- ## React Deliverable -->
+## React Deliverable
+For this deliverable I converted the application over to use React.
+- **Bundled and transpiled** - done!
+- **Components** - Login, personal goals page, shared goals, sending goals, and adding goals are all components
+    - unfortunately, some of the css is not quite what I would've wanted given more time, but everything works and looks fairly put together
+- **Router** - Routing between login and all the other main components
+- **Hooks** - Used these extensively, especcially useState and useEffect
