@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom';
 import '../styles.css';
 
 export function Goals() {
+    const [quote, setQuote] = React.useState('Loading...');
+    const [author, setAuthor] = React.useState('');
     const [personalGoals, setPersonalGoals] = React.useState([]);
     const navigate = useNavigate();
 
@@ -22,12 +24,21 @@ export function Goals() {
                     setPersonalGoals(JSON.parse(personalGoalsText));
                 }
             });
+
+        fetch("https://type.fit/api/quotes")
+            .then((response) => response.json())
+            .then((allQuotes) => {
+                let index = Math.floor(Math.random() * allQuotes.length);
+                let quoteAndAuthor = allQuotes.at(index);
+                setAuthor(quoteAndAuthor.author.split(',')[0]);
+                setQuote(quoteAndAuthor.text);
+            })
     }, []);
 
     return (
         <main>
             <h1 className='fix-header'>Personal Goals</h1>
-            <h4 className='center-text' id='inspirationalQuote'></h4>
+            <h4 className='center-text' id='inspirationalQuote'>{quote} - {author}</h4>
             <Accordion defaultActiveKey="0" className='accordion'>
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>Physical Goals</Accordion.Header>
