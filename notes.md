@@ -600,3 +600,41 @@ Endpoint Design
 - compress, reduce, minify
 - lazy load
 - use psychology
+
+# Final Exam Review Notes:
+- Ports:
+    - HTTP = 80
+    - HTTPS = 443
+    - SSH = 22
+    - FTP = 21
+- HTTP Headers:
+    - Cookie - you don't have to expressely provide this in express, but express does that behing the scenes and sets the cookies in the headers
+    - Content-Type - when making a request, you send a certain content type, and you receive a certain type back in the response
+    - Host - always gets sent on every request (states who's hosting the request: who's sending it)
+- JSX:
+    - Mainly combines HTML & JavaScript, not really CSS
+    - Componentizes HTML
+    - Allows rendering of HTMl from JavaScript
+    - Allows for composability of HTML (composing it from other things)
+- Linux daemon:
+    - Idea is you need something to run on your computer without a user
+    - PM2 is an example that we used: it's running our server, even when we log out of it
+- NPM install:
+    - when you do an npm install, it adds a dependency to your package.json file
+    - it locks you in at that version that you installed, so if the maker of that node package keeps updating it, you won't automatically install that version
+        - this is true even for running npm install on a cloned repository with that package.json with an empty node_modules folder
+    - the source code for that npm package is downloaded into node_modules
+- WebSocket:
+    - Will close after a second, so you actually need to call ping & pong to keep the WebSocket open
+    - can do peer-to-peer stuff, but still has to go through the server to do so
+- Cookies:
+    - Allow a server to store data on the client
+- Status Codes:
+    - 200s - success
+    - 300s - redirects or catching (sent something back, but not what you asked for)
+    - 400s - client/frontend errors (asked for something that didn't exist)
+    - 500s - server errors
+- MongoDB Queries:
+    - deafualt expression is $and
+        - this can be overriden by using $or to see if one field matches this OR another field matches that
+    - **REVIEW MONGO DB Syntax**
