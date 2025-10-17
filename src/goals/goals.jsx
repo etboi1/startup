@@ -30,7 +30,7 @@ export function Goals() {
                 }
             });
 
-        fetch("https://type.fit/api/quotes")
+        fetch("/api/quotes")
             .then((response) => response.json())
             .then((allQuotes) => {
                 let index = Math.floor(Math.random() * allQuotes.length);

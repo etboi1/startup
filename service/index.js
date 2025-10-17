@@ -23,6 +23,18 @@ app.use(express.static('public'));
 //Trust ip addresses from proxy - this way we can use ip addresses without req.ip
 app.set('trust proxy', true);
 
+//Endpoint for fetching quotes from external API
+app.get('/api/quotes', async (req, res) => {
+  try {
+    const response = await fetch('https://type.fit/api/quotes');
+    const data = await response.json();
+    res.json(data);
+  } catch (err) {
+    console.error('Error fetching quotes:', err);
+    res.status(500).json({ error: 'Failed to fetch quotes' });
+  }
+});
+
 //I'm gonna use apiRouter for service endpoints, just like simon
 let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
