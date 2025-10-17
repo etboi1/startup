@@ -26,12 +26,12 @@ app.set('trust proxy', true);
 //Endpoint for fetching quotes from external API
 app.get('/api/quotes', async (req, res) => {
   try {
-    const response = await fetch('https://type.fit/api/quotes');
+    const response = await fetch('https://api.quotable.io/random');
     const data = await response.json();
     res.json(data);
   } catch (err) {
-    console.error('Error fetching quotes:', err);
-    res.status(500).json({ error: 'Failed to fetch quotes' });
+    console.error('Error fetching quote:', err);
+    res.status(500).json({ error: 'Failed to fetch quote' });
   }
 });
 

@@ -32,11 +32,9 @@ export function Goals() {
 
         fetch("/api/quotes")
             .then((response) => response.json())
-            .then((allQuotes) => {
-                let index = Math.floor(Math.random() * allQuotes.length);
-                let quoteAndAuthor = allQuotes.at(index);
-                setAuthor(quoteAndAuthor.author.split(',')[0]);
-                setQuote(quoteAndAuthor.text);
+            .then((quote) => {
+                setAuthor(quote.author);
+                setQuote(quote.content);
             })
     }, []);
 
